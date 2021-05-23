@@ -1,0 +1,3 @@
+org\cytoscape\sample\internal\CyActivator.class
+org\cytoscape\sample\internal\ImportVisualStyleTask.class
+org\cytoscape\sample\internal\ImportVisualStyleTaskFactory.class
