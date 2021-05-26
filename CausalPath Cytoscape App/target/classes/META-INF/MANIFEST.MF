@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-1.15.0
+Bnd-LastModified: 1622058919118
+Import-Package: org.cytoscape.application;version="[3.0,4)",org.cytoscap
+ e.service.util;version="[3.0,4)",org.cytoscape.task.read;version="[3.0,
+ 4)",org.cytoscape.task.visualize;version="[3.0,4)",org.cytoscape.view.m
+ odel;version="[3.0,4)",org.cytoscape.work;version="[3.0,4)",org.osgi.fr
+ amework;version="[1.5,2)"
+Bundle-Name: causalpath_cytoscape_app
+Bundle-Activator: org.cytoscape.sample.internal.CyActivator
+Bundle-SymbolicName: org.cytoscape.causal_path_cytoscape_app
+Bundle-Version: 1.0
+Built-By: PRITAM PC
+Build-Jdk: 16
+
