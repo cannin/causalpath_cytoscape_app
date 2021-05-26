@@ -6,16 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sample-import-network-file" />
+        <module name="causalpath_cytoscape_app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="sample-import-network-file" target="1.8" />
+      <module name="causalpath_cytoscape_app" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="sample-import-network-file" options="-Xmaxwarns 10000 -Xmaxerrs 10000" />
+      <module name="causalpath_cytoscape_app" options="-Xmaxwarns 10000 -Xmaxerrs 10000" />
     </option>
   </component>
 </project>
