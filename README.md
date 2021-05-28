@@ -22,6 +22,6 @@ A Build Success will be shown in the cmd and a jar file named <b>causalpath_cyto
 # Step 2
 ```
 1.Copy the App from the <b>/target</b> folder into "C:\Users\<your PC_NAME>\CytoscapeConfiguration\3\apps\installed".
-2. Open the Cytoscape app and click on <b>Apps</b> from the menu bar and It will look something like following. 
+2. Open the Cytoscape app and click on <b>Apps</b> from the menu bar and It will look similar to the following images. 
 ```
-
+<img src="Images/Guide_screenshot_1.png" height=350/>
