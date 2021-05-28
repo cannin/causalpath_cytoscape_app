@@ -1,18 +1,18 @@
 # causalpath_cytoscape_app
 
-<h1>Instruction to Run the causalpath_cytoscape_app</h1> 
+# Instruction to Run the causalpath_cytoscape_app
 # Pre- Requisites
 ```
 Java
 Maven
 ```
-<h2>Step 1</step>
+# Step 1 
 Clone this repository into local desktop.
 ```
 Navigate to the directory "<your path to this directory>\causalpath_cytoscape_app\CausalPath Cytoscape App\" using cmd or open Git Bash in the 
 mentioned directory.
 ```
-#Run
+# Run
 ```
 command 1.mvn compile
 command 2.mvn clean install
