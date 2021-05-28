@@ -8,7 +8,7 @@ Maven
 Cytoscape
 ```
 # Step 1 
-Clone this repository into local desktop.
+Clone this repository into the local desktop.
 ```
 Navigate to the directory "<your path to this directory>\causalpath_cytoscape_app\CausalPath Cytoscape App\" using cmd 
 or open Git Bash in the mentioned directory.
@@ -24,4 +24,5 @@ A Build Success will be shown in the cmd and a jar file named <b>causalpath_cyto
 1.Copy the App from the <b>/target</b> folder into "C:\Users\<your PC_NAME>\CytoscapeConfiguration\3\apps\installed".
 2. Open the Cytoscape app and click on <b>Apps</b> from the menu bar and It will look similar to the following images. 
 ```
-<img src="Images/Guide_screenshot_1.png" height=350/>
+<img src="Images/Guide_screenshot_1.png" height=450/>
+Click on the "Samples" from the list and the app will be listed there.
