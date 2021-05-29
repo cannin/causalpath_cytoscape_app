@@ -29,9 +29,13 @@ During the community bonding period, I was assigned the following work:
 
 1. **Create Basic Cytoscape App Demo**  
     Status: **In Progress**  
+    
     [Source Code](https://github.com/cytoscape/cytoscape-app-samples/tree/master/sample-import-visual-style)
+    
     I created a basic cytoscape app which imports a network file and visualizes the network.I did minor changes to source code. 
+    
     **Repository:** [CausalPath Cytoscape App](https://github.com/cannin/causalpath_cytoscape_app/tree/main/CausalPath%20Cytoscape%20App)
+    
     **Issue:** [Get CausalPath Running](https://github.com/cannin/causalpath_cytoscape_app/issues/2)
     
     **Pull Request:**    
