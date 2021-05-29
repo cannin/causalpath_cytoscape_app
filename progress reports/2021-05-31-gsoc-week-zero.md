@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [ Week Zero_1, Welcome GSoC ]
+Title:  [Week Zero_1, Welcome GSoC]
 Tags: [GSoC, Weekly Report, Community Bonding]
 Author: [Pritam Saha]
 ---
@@ -57,7 +57,7 @@ During the community bonding period, I was assigned the following work:
 3. **Cytoscape App development documentation**  
     Status: **In Progress**  
     
-    The requirement of Cytoscape app development documentation for understanding the complete workflow of different components of it.  
+    The requirement of Cytoscape app development documentation for understanding the complete workflow of different components in it.  
     
     **Issue:** [Cytoscape Documentation](https://github.com/cannin/causalpath_cytoscape_app/issues/6)
 
