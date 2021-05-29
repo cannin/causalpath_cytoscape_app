@@ -57,7 +57,9 @@ During the community bonding period, I was assigned the following work:
 
 3. **Cytoscape App development documentaion**  
     Status: **In Progress**  
-    The requirment of Cytoscape app development documentation for understanding the complete workflow of different component of it.     
+    
+    The requirment of Cytoscape app development documentation for understanding the complete workflow of different component of it.  
+    
     **Issue:** [Cytoscape Documentation](https://github.com/cannin/causalpath_cytoscape_app/issues/6)
 
 
