@@ -6,8 +6,7 @@ author: Pritam Saha
 ---
 
 ## About Me
-I am an undergraduate student, pursuing Electrical and Electronics Engineering at [Jadavpur University](http://jaduniv.edu.in), Kolkata, India.
-My field of interest are Maching Learning , Computer Vision and Natural Language Processing. I always try to improve myself by gathering knowledge.
+I am an undergraduate student, pursuing Electrical and Electronics Engineering at [Jadavpur University](http://jaduniv.edu.in), Kolkata, India. My field of interest are Maching Learning , Computer Vision and Natural Language Processing. I always try to improve myself by gathering knowledge.
 
 ## GSoC Project
 
