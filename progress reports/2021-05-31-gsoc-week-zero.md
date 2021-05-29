@@ -1,12 +1,12 @@
 ---
 Layout: [post]
-Title:  [ Week Zero_1 , Welcome GSoC ]
+Title:  [ Week Zero_1, Welcome GSoC ]
 Tags: [GSoC, Weekly Report, Community Bonding]
 Author: [Pritam Saha]
 ---
 
 ## About Me
-I am an undergraduate student, pursuing Electrical and Electronics Engineering at [Jadavpur University](http://jaduniv.edu.in), Kolkata, India. My field of interest are Maching Learning , Computer Vision and Natural Language Processing. I always try to improve myself by gathering knowledge.
+I am an undergraduate student, pursuing Electrical and Electronics Engineering at [Jadavpur University](http://jaduniv.edu.in), Kolkata, India. My field of interest is Machine Learning, Computer Vision, and Natural Language Processing. I always try to improve myself by gathering knowledge.
 
 ## GSoC Project
 
@@ -20,7 +20,7 @@ Mentor:
 
 
 ## Community Bonding  
-This period of GSoC started after the project announcements. I get to know the more about the mentors and community in this period.
+This period of GSoC started after the project announcements. I get to know more about the mentors and community in this period.
 
 
 ## Tasks  
@@ -31,7 +31,7 @@ During the community bonding period, I was assigned the following work:
     
     [Source Code](https://github.com/cytoscape/cytoscape-app-samples/tree/master/sample-import-visual-style)
     
-    I created a basic cytoscape app which imports a network file and visualizes the network.I did minor changes to source code. 
+    I created a basic Cytoscape app which imports a network file and visualizes the network. I did minor changes to the source code. 
     
     **Repository:** [CausalPath Cytoscape App](https://github.com/cannin/causalpath_cytoscape_app/tree/main/CausalPath%20Cytoscape%20App)
     
@@ -54,13 +54,14 @@ During the community bonding period, I was assigned the following work:
             - [Ran the casual path algorithm successfully and uploading a sample result.](https://github.com/cannin/causalpath_cytoscape_app/pull/3)  
      
 
-3. **Cytoscape App development documentaion**  
+3. **Cytoscape App development documentation**  
     Status: **In Progress**  
     
-    The requirment of Cytoscape app development documentation for understanding the complete workflow of different component of it.  
+    The requirement of Cytoscape app development documentation for understanding the complete workflow of different components of it.  
     
     **Issue:** [Cytoscape Documentation](https://github.com/cannin/causalpath_cytoscape_app/issues/6)
 
 
 ## Conclusion  
-
+It has been a very productive week so far. The mentors are very helpful and friendly. The communication is very smooth and can easily reach out to them for any doubt.
+Although I am new to Cytoscape, I had started learning from the beginning of the period. As a whole, I am moving forward and enjoying the period. 
