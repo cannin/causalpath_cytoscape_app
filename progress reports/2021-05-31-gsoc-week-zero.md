@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week Zero_1 | Welcome GSoC"
+title:  "Week Zero_1 | <b>Welcome GSoC</b>"
 tags: [GSoC, Weekly Report, Community Bonding]
 author: Pritam Saha
 ---
