@@ -6,8 +6,8 @@ Author: [Pritam Saha]
 ---
 ## Coding Phase
 
-This is the period of GSoC where the students work on their projects, with an intention to contribute to the Open Source Community.  
-This phase spans until the end of the program. During this period, two evaluations are done to keep a track of the progress the student is making. First evaluation starts from 16th July and the final one marks the end of the program.
+This is the period of GSoC where the students started to write code and started contributing to the Open Source Community.  
+This phase spans until the end of the program. During this period, two evaluations are done to keep a track of the progress the student is making. The first evaluation starts on 16th July and the final one marks the end of the program.
 
 ## Work Progress
 
@@ -20,4 +20,4 @@ This phase spans until the end of the program. During this period, two evaluatio
 ## Conclusion  
 
 The week was a great start to my open source journey.<br>
-I hope that I would grow in this Coding Period and be a good contributor for the open-source community.
+I hope that I would grow in this Coding Period and be a good contributor to the open-source community.
