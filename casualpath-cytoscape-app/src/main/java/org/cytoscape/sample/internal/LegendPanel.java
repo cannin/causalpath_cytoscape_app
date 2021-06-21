@@ -7,24 +7,22 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.JTextComponent;
 
-import com.sun.java.swing.ui.StatusBar;
 import org.cytoscape.application.swing.CytoPanelComponent;
 import org.cytoscape.application.swing.CytoPanelName;
+import org.cytoscape.sample.internal.Listensers.FormatFileImportActionListener;
+import org.cytoscape.sample.internal.Listensers.JsonFileImportActionListener;
+import org.cytoscape.sample.internal.Listensers.SIFImportButtonActionListener;
+import org.cytoscape.sample.internal.Listensers.TxtFileImportButtonActionListener;
+import org.cytoscape.service.util.CyServiceRegistrar;
 import org.cytoscape.task.read.LoadNetworkFileTaskFactory;
 import org.cytoscape.task.visualize.ApplyVisualStyleTaskFactory;
 import org.cytoscape.view.model.CyNetworkView;
-import org.cytoscape.work.TaskIterator;
-import org.cytoscape.work.TaskMonitor;
 
 public class LegendPanel extends JPanel implements CytoPanelComponent {
 	
 	private static final long serialVersionUID = 8292806967891823933L;
-
-    public ImportVisualStyleTaskFactory importVisualStyleTaskFactory;
-    public ImportVisualStyleTask importVisualStyleTask;
+	public CyServiceRegistrar cyServiceRegistrar;
     public LoadNetworkFileTaskFactory loadNetworkFileTaskFactory;
     public CyNetworkView view;
 	JButton networkfileuploadbutton = new JButton("Upload Sif File");
@@ -48,8 +46,8 @@ public class LegendPanel extends JPanel implements CytoPanelComponent {
 	ButtonGroup buttonGroup1 = new ButtonGroup();
 	JScrollPane jScrollPane = new JScrollPane();
     public ApplyVisualStyleTaskFactory applyVisualStyleTaskFactory;
-	public LegendPanel(LoadNetworkFileTaskFactory loadNetworkFileTaskFactory, CyNetworkView view,
-					   ApplyVisualStyleTaskFactory applyVisualStyleTaskFactory) {
+	public LegendPanel(CyServiceRegistrar cyServiceRegistrar) {
+		this.cyServiceRegistrar=cyServiceRegistrar;
 		//this.importVisualStyleTaskFactory = importVisualStyleTaskFactory;
 		this.loadNetworkFileTaskFactory=loadNetworkFileTaskFactory;
 		this.applyVisualStyleTaskFactory=applyVisualStyleTaskFactory;
@@ -66,28 +64,17 @@ public class LegendPanel extends JPanel implements CytoPanelComponent {
         formatfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Jsonfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         submitbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        submitbutton.setOpaque(true);
+        //submitbutton.setOpaque(true);
         submitbutton.setToolTipText("Please upload the files correctly before submitting");
-        submitbutton.setEnabled(false);
+        //submitbutton.setEnabled(false);
+		submitbutton.addActionListener(new TxtFileImportButtonActionListener(this,cyServiceRegistrar));
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        networkfileuploadbutton.addActionListener(new SIFImportButtonActionListener(this,cyServiceRegistrar));
+		formatfileuploadbutton.addActionListener(new FormatFileImportActionListener(this,cyServiceRegistrar));
+		Jsonfileuploadbutton.addActionListener(new JsonFileImportActionListener(this,cyServiceRegistrar));
 
-		formatfileuploadbutton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,"Loaded succesfully","Format File Upload",JOptionPane.INFORMATION_MESSAGE);
-
-
-			}
-		});
-		submitbutton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,"Uploaded succesfully","Submitted",JOptionPane.INFORMATION_MESSAGE);
-
-			}
-		});
 		Siftype.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
