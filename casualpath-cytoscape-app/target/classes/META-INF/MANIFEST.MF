@@ -2,16 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Created-By: Apache Maven Bundle Plugin
 Tool: Bnd-1.15.0
-Bnd-LastModified: 1624225267354
+Bnd-LastModified: 1624825727076
 Import-Package: javax.swing,javax.swing.border,javax.swing.filechooser,j
- avax.xml.parsers,org.cytoscape.application;version="[3.0,4)",org.cytosc
- ape.application.swing;version="[3.0,4)",org.cytoscape.command;version="
- [3.0,4)",org.cytoscape.io.read;version="[3.0,4)",org.cytoscape.model;ve
- rsion="[3.0,4)",org.cytoscape.service.util;version="[3.0,4)",org.cytosc
- ape.task.read;version="[3.0,4)",org.cytoscape.task.visualize;version="[
- 3.0,4)",org.cytoscape.view.model;version="[3.0,4)",org.cytoscape.work;v
- ersion="[3.0,4)",org.osgi.framework;version="[1.5,2)",org.panda.causalp
- ath.run,org.xml.sax
+ avax.xml.parsers,org.cytoscape.application;version="[3.1,4)",org.cytosc
+ ape.application.swing;version="[3.1,4)",org.cytoscape.command;version="
+ [3.1,4)",org.cytoscape.io.read;version="[3.1,4)",org.cytoscape.model;ve
+ rsion="[3.1,4)",org.cytoscape.service.util;version="[3.1,4)",org.cytosc
+ ape.task.read;version="[3.1,4)",org.cytoscape.task.visualize;version="[
+ 3.1,4)",org.cytoscape.view.model;version="[3.1,4)",org.cytoscape.work;v
+ ersion="[3.1,4)",org.osgi.framework;version="[1.5,2)",org.xml.sax
 Bundle-ClassPath: .,gson-2.3.1.jar
 Bundle-Name: Casual-path-cytoscape-app
 Embed-Dependency: gson

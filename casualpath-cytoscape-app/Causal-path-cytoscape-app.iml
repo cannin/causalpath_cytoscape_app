@@ -10,37 +10,38 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.cytoscape:application-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:viewmodel-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:presentation-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:swing-application-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:work-swing-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:session-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:work-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:service-api:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:application-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:viewmodel-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:presentation-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:swing-application-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:work-swing-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:session-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:work-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:service-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.osgi:org.osgi.core:4.2.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:vizmap-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:core-task-api:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:vizmap-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:core-task-api:3.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.8.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ops4j.pax.logging:pax-logging-api:1.5.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.cytoscape:service-api:test-jar:tests:3.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.cytoscape:service-api:test-jar:tests:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.3.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.8.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.cytoscape:io-api:3.0.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.cytoscape:model-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:app-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:group-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:layout-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:property-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:equations-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:webservice-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:datasource-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:event-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:command-executor-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:swing-util-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:swing-app-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:vizmap-gui-api:3.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.cytoscape:webservice-swing-api:3.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.cytoscape:io-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:filter-api:3.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.cytoscape:model-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:app-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:group-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:layout-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:property-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:equations-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:webservice-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:datasource-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:event-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:command-executor-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:swing-util-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:swing-app-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:vizmap-gui-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.cytoscape:webservice-swing-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.panda:causalpath:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.panda:utility:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.7" level="project" />

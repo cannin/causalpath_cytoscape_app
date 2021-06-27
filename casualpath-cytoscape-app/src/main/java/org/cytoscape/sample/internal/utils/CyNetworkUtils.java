@@ -11,14 +11,14 @@ import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNetworkManager;
 import org.cytoscape.model.CyNode;
+import org.cytoscape.sample.internal.CyActivator;
 import org.cytoscape.service.util.CyServiceRegistrar;
 import org.cytoscape.view.model.CyNetworkView;
 import org.cytoscape.view.model.CyNetworkViewFactory;
 import org.cytoscape.view.model.CyNetworkViewManager;
 import org.cytoscape.work.TaskIterator;
 
-import  org.cytoscape.sample.internal.CyActivator;
-import  org.cytoscape.sample.internal.cellnoptr.utils.CommandExecutor;
+import  org.cytoscape.sample.internal.ImportandExecutor.utils.CommandExecutor;
 
 public class CyNetworkUtils {
 
@@ -68,12 +68,13 @@ public class CyNetworkUtils {
 		
 		// Register network
 		cyServiceRegistrar.getService(CyNetworkManager.class).addNetwork(cyNetwork);
-		
+		System.out.println(networkName);
 		// Create network view
 		CyNetworkView cyNetworkView = cyServiceRegistrar.getService(CyNetworkViewFactory.class).createNetworkView(cyNetwork);
 		cyServiceRegistrar.getService(CyNetworkViewManager.class).addNetworkView(cyNetworkView);
 		
 		// Apply visual style
+		System.out.println("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"");
 		CommandExecutor.execute("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"", cyServiceRegistrar);
 		
 		// Apply layout

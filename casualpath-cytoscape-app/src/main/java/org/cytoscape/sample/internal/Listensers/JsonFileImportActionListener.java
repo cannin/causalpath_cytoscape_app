@@ -1,7 +1,7 @@
 package org.cytoscape.sample.internal.Listensers;
 
 import org.cytoscape.sample.internal.LegendPanel;
-import org.cytoscape.sample.internal.cellnoptr.tasks.JsonImport;
+import org.cytoscape.sample.internal.ImportandExecutor.tasks.JsonImport;
 import org.cytoscape.service.util.CyServiceRegistrar;
 
 import javax.swing.*;

@@ -8,6 +8,7 @@ import org.cytoscape.application.swing.CyAction;
 
 import org.cytoscape.service.util.CyServiceRegistrar;
 import org.cytoscape.task.read.LoadNetworkFileTaskFactory;
+import org.cytoscape.task.read.LoadVizmapFileTaskFactory;
 import org.cytoscape.task.visualize.ApplyVisualStyleTaskFactory;
 import org.cytoscape.work.SynchronousTaskManager;
 import org.cytoscape.work.Task;
@@ -18,12 +19,14 @@ import org.osgi.framework.BundleContext;
 
 import org.cytoscape.service.util.AbstractCyActivator;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 
 public class CyActivator extends AbstractCyActivator {
-	public static String visualStyleName =  "/CytocopterVisualStyle.xml";
+	public static String visualStyleFile =  "/CytocopterVisualStyle.xml";
 	public  static CyServiceRegistrar cyServiceRegistrar;
+	public static final String visualStyleName = "Cytocopter";
 
 	public CyActivator() {
 		super();
@@ -50,8 +53,13 @@ public class CyActivator extends AbstractCyActivator {
 		//registerService(bc,importVisualStyleTask, Task.class,new Properties());
 
 		System.out.println("After Registering Service");
+		//loadVisualStyle();
 	}
 
-
+	private void loadVisualStyle () {
+		InputStream in = getClass().getResourceAsStream(visualStyleFile);
+		LoadVizmapFileTaskFactory loadVizmapFileTaskFactory =  cyServiceRegistrar.getService(LoadVizmapFileTaskFactory.class);
+		loadVizmapFileTaskFactory.loadStyles(in);
+	}
 }
 

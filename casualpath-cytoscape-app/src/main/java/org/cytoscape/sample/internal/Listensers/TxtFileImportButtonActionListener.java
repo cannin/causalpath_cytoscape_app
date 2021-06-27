@@ -1,7 +1,7 @@
 package org.cytoscape.sample.internal.Listensers;
 
 import org.cytoscape.sample.internal.LegendPanel;
-import org.cytoscape.sample.internal.cellnoptr.tasks.TxtFileImport;
+import org.cytoscape.sample.internal.ImportandExecutor.tasks.TxtFileImport;
 import org.cytoscape.service.util.CyServiceRegistrar;
 
 import javax.swing.*;

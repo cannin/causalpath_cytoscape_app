@@ -1,13 +1,11 @@
 package org.cytoscape.sample.internal.Listensers;
 
 import org.cytoscape.sample.internal.LegendPanel;
-import org.cytoscape.sample.internal.cellnoptr.tasks.FormatFileImport;
+import org.cytoscape.sample.internal.ImportandExecutor.tasks.FormatFileImport;
 import org.cytoscape.service.util.CyServiceRegistrar;
-import org.xml.sax.SAXException;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.xml.parsers.ParserConfigurationException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
