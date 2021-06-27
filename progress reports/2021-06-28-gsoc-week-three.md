@@ -11,7 +11,7 @@ This week is about the creating the visualization of network and continue workin
 
 1. **Create View for the Network file**  
     Status: **Under Development**  
-    **Issue:** [Format the SIF file correctly and visualize the network with a sample style](https://github.com/cannin/causalpath_cytoscape_app/issues/13)
+    **Issue:** [Edit the SIF file correctly and visualize the network with a sample style](https://github.com/cannin/causalpath_cytoscape_app/issues/13)
 
 2. **Run causalpath.jar From Within Cytoscape App**  
     Status: **Under Development**  
