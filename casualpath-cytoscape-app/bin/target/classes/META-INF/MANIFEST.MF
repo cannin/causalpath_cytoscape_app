@@ -10,7 +10,7 @@ Import-Package: javax.swing,javax.swing.border,org.cytoscape.application
  ape.view.model;version="[3.0,4)",org.cytoscape.work;version="[3.0,4)",o
  rg.osgi.framework;version="[1.5,2)"
 Bundle-Name: Sample App - Control Panel
-Bundle-Activator: org.cytoscape.sample.internal.CyActivator
+Bundle-Activator: org.cytoscape.sample.casualpath.CyActivator
 Bundle-SymbolicName: org.cytoscape.Casual-path-cytoscape-app
 Bundle-Version: 1.0
 Built-By: PRITAM PC
