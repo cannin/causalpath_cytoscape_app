@@ -13,7 +13,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import org.cytoscape.model.CyNetwork;
-import org.cytoscape.sample.casualpath.LegendPanel;
+import org.cytoscape.sample.casualpath.Panel.LegendPanel;
 import org.cytoscape.service.util.CyServiceRegistrar;
 import org.xml.sax.SAXException;
 import org.cytoscape.sample.casualpath.utils.CyNetworkUtils;

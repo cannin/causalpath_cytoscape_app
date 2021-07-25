@@ -6,14 +6,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.cytoscape.model.CyNetwork;
-import org.cytoscape.sample.casualpath.LegendPanel;
+import org.cytoscape.sample.casualpath.Panel.LegendPanel;
 import org.cytoscape.sample.casualpath.utils.CyNetworkUtils;
 import org.cytoscape.service.util.CyServiceRegistrar;
-import org.xml.sax.SAXException;
 
 import javax.swing.*;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.*;
 
 public class JsonImport {

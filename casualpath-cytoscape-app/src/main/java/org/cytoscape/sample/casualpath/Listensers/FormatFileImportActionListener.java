@@ -1,6 +1,6 @@
 package org.cytoscape.sample.casualpath.Listensers;
 
-import org.cytoscape.sample.casualpath.LegendPanel;
+import org.cytoscape.sample.casualpath.Panel.LegendPanel;
 import org.cytoscape.sample.casualpath.ImportandExecutor.tasks.FormatFileImport;
 import org.cytoscape.service.util.CyServiceRegistrar;
 import org.xml.sax.SAXException;

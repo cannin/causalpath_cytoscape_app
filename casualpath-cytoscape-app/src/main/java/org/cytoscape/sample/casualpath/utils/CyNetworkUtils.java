@@ -1,6 +1,7 @@
 package  org.cytoscape.sample.casualpath.utils;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -30,8 +31,8 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-
-
+import org.cytoscape.model.events.SelectedNodesAndEdgesEvent;
+import org.cytoscape.model.events.SelectedNodesAndEdgesListener;
 public class CyNetworkUtils {
 
 	public static CyNetwork getCyNetwork (CyServiceRegistrar cyServiceRegistrar, String networkName) {
@@ -89,7 +90,7 @@ public class CyNetworkUtils {
 		//System.out.println("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"");
 		//CommandExecutor.execute("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"", cyServiceRegistrar);
 		SynchronousTaskManager manager = cyServiceRegistrar.getService(SynchronousTaskManager.class);
-		StyleCreate styleCreate = new StyleCreate(manager,cyServiceRegistrar,formatFileImport);
+		StyleCreate styleCreate = new StyleCreate(manager,cyServiceRegistrar,formatFileImport,cyNetwork);
 		styleCreate.createStyle(cyNetworkView);
 
 
@@ -110,7 +111,7 @@ public class CyNetworkUtils {
 		//System.out.println("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"");
 		//CommandExecutor.execute("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"", cyServiceRegistrar);
 		SynchronousTaskManager manager = cyServiceRegistrar.getService(SynchronousTaskManager.class);
-		StyleCreate styleCreate = new StyleCreate(manager,cyServiceRegistrar, new RGBValue(255,255,255));
+		StyleCreate styleCreate = new StyleCreate(manager,cyServiceRegistrar, new RGBValue(255,255,255),cyNetwork);
 		styleCreate.createStyle(cyNetworkView);
 
 
@@ -125,6 +126,7 @@ public class CyNetworkUtils {
 		CommandExecutor.execute(new TaskIterator(networkReader), cyServiceRegistrar);
 		return networkReader.getNetworks()[0];
 	}
+
 
 
 }

@@ -1,6 +1,7 @@
 package org.cytoscape.sample.casualpath.ImportandExecutor.tasks;
 
 import org.cytoscape.service.util.CyServiceRegistrar;
+import org.panda.causalpath.run.CausalityAnalysisSingleMethodInterface;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,15 +20,7 @@ public class TxtFileImport {
     public void writeTxt(File txtfile, String pathtofile) throws IOException{
         System.out.println(pathtofile);
 
-          /*
-            CausalPath causalPath = new CausalPath(pathtofile);
-        try {
 
-            causalPath.run();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        */
 
 
     }

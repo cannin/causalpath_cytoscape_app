@@ -1,7 +1,7 @@
 package org.cytoscape.sample.casualpath.ImportandExecutor.tasks;
 
 
-import org.cytoscape.sample.casualpath.LegendPanel;
+import org.cytoscape.sample.casualpath.Panel.LegendPanel;
 import org.cytoscape.sample.casualpath.creatystyle.RGBValue;
 import org.cytoscape.service.util.CyServiceRegistrar;
 import org.xml.sax.SAXException;

@@ -2,19 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Created-By: Apache Maven Bundle Plugin
 Tool: Bnd-1.15.0
-Bnd-LastModified: 1626037257738
+Bnd-LastModified: 1627247784144
 Import-Package: javax.swing,javax.swing.border,javax.swing.filechooser,j
  avax.xml.parsers,javax.xml.transform,org.cytoscape.application;version=
- "[3.1,4)",org.cytoscape.application.swing;version="[3.1,4)",org.cytosca
- pe.command;version="[3.1,4)",org.cytoscape.io.read;version="[3.1,4)",or
- g.cytoscape.model;version="[3.1,4)",org.cytoscape.service.util;version=
- "[3.1,4)",org.cytoscape.task.read;version="[3.1,4)",org.cytoscape.task.
- visualize;version="[3.1,4)",org.cytoscape.view.model;version="[3.1,4)",
- org.cytoscape.view.presentation.property;version="[3.1,4)",org.cytoscap
- e.view.presentation.property.values;version="[3.1,4)",org.cytoscape.vie
- w.vizmap;version="[3.1,4)",org.cytoscape.view.vizmap.mappings;version="
- [3.1,4)",org.cytoscape.work;version="[3.1,4)",org.osgi.framework;versio
- n="[1.5,2)",org.xml.sax
+ "[3.7,4)",org.cytoscape.application.swing;version="[3.7,4)",org.cytosca
+ pe.command;version="[3.7,4)",org.cytoscape.io.read;version="[3.7,4)",or
+ g.cytoscape.model;version="[3.7,4)",org.cytoscape.model.events;version=
+ "[3.7,4)",org.cytoscape.service.util;version="[3.7,4)",org.cytoscape.ta
+ sk.read;version="[3.7,4)",org.cytoscape.task.visualize;version="[3.7,4)
+ ",org.cytoscape.view.model;version="[3.7,4)",org.cytoscape.view.present
+ ation;version="[3.7,4)",org.cytoscape.view.presentation.property;versio
+ n="[3.7,4)",org.cytoscape.view.presentation.property.values;version="[3
+ .7,4)",org.cytoscape.view.vizmap;version="[3.7,4)",org.cytoscape.view.v
+ izmap.mappings;version="[3.7,4)",org.cytoscape.work;version="[3.7,4)",o
+ rg.osgi.framework;version="[1.5,2)",org.xml.sax
 Bundle-ClassPath: .,gson-2.3.1.jar
 Bundle-Name: Casual-path-cytoscape-app
 Embed-Dependency: gson
