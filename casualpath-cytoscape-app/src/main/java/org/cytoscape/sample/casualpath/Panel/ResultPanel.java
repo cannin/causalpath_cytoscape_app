@@ -76,7 +76,7 @@ public class ResultPanel extends JPanel implements CytoPanelComponent {
 //         nodeheading.setVisible(false);
 
         toolBarPanel = new JPanel(new GridBagLayout());
-        heading = new JLabel("Node Site Information");
+        heading = new JLabel("CausalPath");
         heading.setFont(new java.awt.Font("Tahoma", 1, 18));
         nodeheading = new JLabel("Node Name");
         nodeheading.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -93,8 +93,8 @@ public class ResultPanel extends JPanel implements CytoPanelComponent {
         c.weightx=0.5;
         c.weighty=0.5;
         c.insets = i;
-        c.anchor= GridBagConstraints.CENTER;
-        toolBarPanel.add(heading,c);
+//        c.anchor= GridBagConstraints.CENTER;
+//        toolBarPanel.add(heading,c);
         c.anchor= GridBagConstraints.NORTHWEST;
         c.gridy=1;
         toolBarPanel.add(nodeheading,c);
@@ -124,13 +124,15 @@ public class ResultPanel extends JPanel implements CytoPanelComponent {
     public JLabel getLabel() {
         return nodename;
     }
-    public void updatetext(String name){
+    public void updatetext(String name,String Siteinfo){
         showPanel();
         jTextArea.setVisible(true);
+
         siteinformation.setVisible(true);
         nodename.setVisible(true);
         nodeheading.setVisible(true);
         nodename.setText(name);
+        jTextArea.setText(Siteinfo);
     }
 
     public void clearPlotPanel () {
@@ -184,7 +186,7 @@ public class ResultPanel extends JPanel implements CytoPanelComponent {
 
     @Override
     public String getTitle() {
-        return "Casual Path Cytoscape App";
+        return "Causal Path ";
     }
 
 }

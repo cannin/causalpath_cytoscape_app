@@ -55,7 +55,7 @@ public class CausalPathHelp extends javax.swing.JFrame {
     public void setText(int buttonNumber) {
       
         helpString =
-                "Casual Path Cytoscape App: \n\n"
+                "Causal Path Cytoscape App: \n\n"
                 + "----\n"
         +"Proteomic analysis (proteomics) refers to the systematic identification and \n"
         +"quantification of the complete complement of proteins (the proteome) of a biological system\n"
@@ -80,7 +80,7 @@ public class CausalPathHelp extends javax.swing.JFrame {
         
                 
 
-        this.setTitle("Casual Path Cytoscpae Help : ");
+        this.setTitle("Causal Path Cytoscpae Help : ");
         
         jTextArea1.setText(helpString);
         jTextArea1.setCaretPosition(0);

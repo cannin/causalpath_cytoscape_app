@@ -30,7 +30,7 @@ public class LabeltextSettings implements Serializable {
     public static final String LABEL_BG_DEFAULT="black";
     public static final String OUTLINE_PROPERTY_DEFAULT= "true";
     public static final String OUTLINE_COLOR_DEFAULT= "#EC1920";
-    public static final String OUTLINE_WIDTH_DEFAULT = "3.0";
+    public static final String OUTLINE_WIDTH_DEFAULT = "4.0";
     private Map<String, String> settings;
     public LabeltextSettings (){
         this.settings = new HashMap<>();
@@ -42,7 +42,7 @@ public class LabeltextSettings implements Serializable {
         this.settings.put(LABEL_WIDTH_PROPERTY,LABEL_SIZE_DEFAULT);
        this.settings.put(LABEL_POSTION_PROPERTY,LABEL_POSTION_DEFAULT);
        this.settings.put(OUTLINE_PROPERTY,OUTLINE_PROPERTY_DEFAULT);
-       this.settings.put(OUTLINE_COLOR_PROPERTY,hex);
+       this.settings.put(OUTLINE_COLOR_PROPERTY,"#00FFFFFF");
        this.settings.put(OUTLINE_WIDTH_PROPERTY,OUTLINE_WIDTH_DEFAULT);
 
 

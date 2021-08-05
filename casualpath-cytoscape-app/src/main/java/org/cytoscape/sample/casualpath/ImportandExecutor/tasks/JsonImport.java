@@ -11,6 +11,7 @@ import org.cytoscape.sample.casualpath.utils.CyNetworkUtils;
 import org.cytoscape.service.util.CyServiceRegistrar;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 
 public class JsonImport {
@@ -27,7 +28,7 @@ public class JsonImport {
         this.legendPanel = legendPanel;
         writeJSON(Formatfile,jsonpath,legendPanel);
     }
-    public void writeJSON(File Formatfile,String jsonpath,LegendPanel legendPanel)throws IOException
+    public void writeJSON(File Jsonfile,String jsonpath,LegendPanel legendPanel)throws IOException
 
     {
         JsonParser jsonParser = new JsonParser();
@@ -92,15 +93,37 @@ public class JsonImport {
             cyNetwork = CyNetworkUtils.readCyNetworkFromFile(cyServiceRegistrar, temp);
             cyNetwork.getRow(cyNetwork).set(CyNetwork.NAME, modelID);
             JProgressBar jProgressBar = legendPanel.getStatusBar();
-            jProgressBar.setValue(100);
+            jProgressBar.setValue(50);
+            legendPanel.getStatusLabel().setText("uploaded..");
+            legendPanel.getStatusLabel().setForeground(new Color(5,102,8));
+            JOptionPane.showMessageDialog(null, Jsonfile);
             JButton jButton = legendPanel.getSubmitbutton();
             jButton.setEnabled(true);
             //CyNetworkUtils.createViewAndRegister(cyServiceRegistrar, cyNetwork);
 
-        } catch (IOException e) {
+        }
+        catch (NullPointerException ignored){
+            JOptionPane optionPane = new JOptionPane("File Open Failed", JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Failure");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+            legendPanel.getStatusLabel().setText("Failed");
+            legendPanel.getStatusLabel().setForeground(Color.RED);
+
+            // ignored.printStackTrace();
+        }
+        catch (FileNotFoundException e) {
+            JOptionPane optionPane = new JOptionPane("File Not Found", JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Failure");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+            //System.out.println("entered here");
+            // e.printStackTrace();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
-        JOptionPane.showMessageDialog(null,"Loaded succesfully","Format File Upload",JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     public CyNetwork getCyNetwork() {

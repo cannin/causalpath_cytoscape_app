@@ -15,9 +15,11 @@ import org.cytoscape.model.CyNode;
 import org.cytoscape.sample.casualpath.CyActivator;
 
 import org.cytoscape.sample.casualpath.ImportandExecutor.tasks.FormatFileImport;
+import org.cytoscape.sample.casualpath.Panel.LegendPanel;
 import org.cytoscape.sample.casualpath.creatystyle.RGBValue;
 import org.cytoscape.sample.casualpath.creatystyle.StyleCreate;
 import org.cytoscape.service.util.CyServiceRegistrar;
+import org.cytoscape.session.CyNetworkNaming;
 import org.cytoscape.view.model.CyNetworkView;
 import org.cytoscape.view.model.CyNetworkViewFactory;
 import org.cytoscape.view.model.CyNetworkViewManager;
@@ -76,54 +78,102 @@ public class CyNetworkUtils {
 		return uniqueName;
 	}
 	
-	public static void createViewAndRegister(CyServiceRegistrar cyServiceRegistrar, CyNetwork cyNetwork, FormatFileImport formatFileImport) throws IOException, TransformerException, ParserConfigurationException, SAXException {
+	public static void createViewAndRegister(CyServiceRegistrar cyServiceRegistrar, CyNetwork cyNetwork, FormatFileImport formatFileImport, LegendPanel legendPanel) throws IOException, TransformerException, ParserConfigurationException, SAXException {
 		String networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
-		
+		CyNetworkNaming cyNetworkNaming = cyServiceRegistrar.getService(CyNetworkNaming.class);
+		cyNetwork.getDefaultNetworkTable().getRow(cyNetwork.getSUID())
+				.set("name", cyNetworkNaming.getSuggestedNetworkTitle(networkName));
 		// Register network
+		//cyServiceRegistrar.getService(CyNetworkManager.class).reset();
 		cyServiceRegistrar.getService(CyNetworkManager.class).addNetwork(cyNetwork);
+
 		System.out.println(networkName);
 		// Create network view
-		CyNetworkView cyNetworkView = cyServiceRegistrar.getService(CyNetworkViewFactory.class).createNetworkView(cyNetwork);
-		cyServiceRegistrar.getService(CyNetworkViewManager.class).addNetworkView(cyNetworkView);
-		
+		final Collection<CyNetworkView> views = cyServiceRegistrar.getService(CyNetworkViewManager.class).getNetworkViews(cyNetwork);
+		System.out.println("");
+		CyNetworkView myView = null;
+		if(views.size() != 0)
+			myView = views.stream().iterator().next();
+
+		if (myView == null) {
+			// create a new view for my network
+//			myView = cnvf.createNetworkView(myNet);
+//			networkViewManager.addNetworkView(myView);
+			myView = cyServiceRegistrar.getService(CyNetworkViewFactory.class).createNetworkView(cyNetwork);
+
+			cyServiceRegistrar.getService(CyNetworkViewManager.class).addNetworkView(myView,true);
+			//cyServiceRegistrar.getService(CyNetworkViewManager.class).reset();
+
+
+		} else {
+			System.out.println("networkView already existed.");
+		}
+
 		// Apply visual style
 		//System.out.println("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"");
 		//CommandExecutor.execute("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"", cyServiceRegistrar);
 		SynchronousTaskManager manager = cyServiceRegistrar.getService(SynchronousTaskManager.class);
 		StyleCreate styleCreate = new StyleCreate(manager,cyServiceRegistrar,formatFileImport,cyNetwork);
-		styleCreate.createStyle(cyNetworkView);
+		styleCreate.createStyle(myView);
 
-
+		networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
+		System.out.println("network name ->"+networkName);
 		// Apply layout
-		CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar);
-	}
-	public static void createViewAndRegister(CyServiceRegistrar cyServiceRegistrar, CyNetwork cyNetwork) throws IOException, TransformerException, ParserConfigurationException, SAXException {
-		String networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
+		CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar,legendPanel,0);
 
+	}
+	public static void createViewAndRegister(CyServiceRegistrar cyServiceRegistrar, CyNetwork cyNetwork,LegendPanel legendPanel) throws IOException, TransformerException, ParserConfigurationException, SAXException {
+		String networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
+		CyNetworkNaming cyNetworkNaming = cyServiceRegistrar.getService(CyNetworkNaming.class);
+		cyNetwork.getDefaultNetworkTable().getRow(cyNetwork.getSUID())
+				.set("name", cyNetworkNaming.getSuggestedNetworkTitle(networkName));
 		// Register network
+		//cyServiceRegistrar.getService(CyNetworkManager.class).reset();
 		cyServiceRegistrar.getService(CyNetworkManager.class).addNetwork(cyNetwork);
 		System.out.println(networkName);
 		// Create network view
-		CyNetworkView cyNetworkView = cyServiceRegistrar.getService(CyNetworkViewFactory.class).createNetworkView(cyNetwork);
-		cyServiceRegistrar.getService(CyNetworkViewManager.class).addNetworkView(cyNetworkView);
+		final Collection<CyNetworkView> views = cyServiceRegistrar.getService(CyNetworkViewManager.class).getNetworkViews(cyNetwork);
+		System.out.println("");
+		CyNetworkView myView = null;
+		if(views.size() != 0)
+			myView = views.stream().iterator().next();
+
+		if (myView == null) {
+			// create a new view for my network
+//			myView = cnvf.createNetworkView(myNet);
+//			networkViewManager.addNetworkView(myView);
+			myView = cyServiceRegistrar.getService(CyNetworkViewFactory.class).createNetworkView(cyNetwork);
+
+			cyServiceRegistrar.getService(CyNetworkViewManager.class).addNetworkView(myView,true);
+			//cyServiceRegistrar.getService(CyNetworkViewManager.class).reset();
+
+		} else {
+			System.out.println("networkView already existed.");
+		}
+//		networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
+//		System.out.println("network name ->"+networkName);
 
 		// Apply visual style
 		//System.out.println("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"");
 		//CommandExecutor.execute("vizmap apply styles=\"" + CyActivator.visualStyleName + "\"", cyServiceRegistrar);
 		SynchronousTaskManager manager = cyServiceRegistrar.getService(SynchronousTaskManager.class);
 		StyleCreate styleCreate = new StyleCreate(manager,cyServiceRegistrar, new RGBValue(255,255,255),cyNetwork);
-		styleCreate.createStyle(cyNetworkView);
+		styleCreate.createStyle(myView);
+
 
 
 		// Apply layout
-		CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar);
+		networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
+		System.out.println("network name ->"+networkName);
+		CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar,legendPanel,1);
+
 	}
 
 
 
 	public static CyNetwork readCyNetworkFromFile (CyServiceRegistrar cyServiceRegistrar, File cyNetworkFile) {
 		CyNetworkReader networkReader = cyServiceRegistrar.getService(CyNetworkReaderManager.class).getReader(cyNetworkFile.toURI(), cyNetworkFile.getName());
-		CommandExecutor.execute(new TaskIterator(networkReader), cyServiceRegistrar);
+		CommandExecutor.execute(new TaskIterator(networkReader), cyServiceRegistrar,0);
 		return networkReader.getNetworks()[0];
 	}
 

@@ -5,6 +5,7 @@ org\cytoscape\sample\casualpath\CyActivator.class
 org\cytoscape\sample\casualpath\CausalPathHelp$1.class
 org\cytoscape\sample\casualpath\design\ApplyEnhancedGraphics.class
 org\cytoscape\sample\casualpath\Panel\ResultPanel.class
+org\cytoscape\sample\casualpath\design\CausalPathedgestyles.class
 org\cytoscape\sample\casualpath\ImportandExecutor\tasks\SIFImport.class
 org\cytoscape\sample\casualpath\Panel\LegendPanel$8.class
 org\cytoscape\sample\casualpath\ImportandExecutor\utils\CommandExecutor.class
@@ -16,6 +17,7 @@ org\cytoscape\sample\casualpath\Panel\LegendPanel$2.class
 org\cytoscape\sample\casualpath\CausalPathHelp.class
 org\cytoscape\sample\casualpath\creatystyle\StyleCreate.class
 org\cytoscape\sample\casualpath\utils\CyNetworkUtils.class
+org\cytoscape\sample\casualpath\creatystyle\Algorithm\FillAnnotation.class
 org\cytoscape\sample\casualpath\Panel\CreateLegendAction.class
 org\cytoscape\sample\casualpath\creatystyle\RGBValue.class
 org\cytoscape\sample\casualpath\design\createstylevisalization.class

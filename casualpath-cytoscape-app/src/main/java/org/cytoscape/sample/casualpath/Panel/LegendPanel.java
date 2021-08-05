@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.*;
-import java.util.Collection;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,9 +15,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
+import org.cytoscape.application.events.*;
 import org.cytoscape.application.swing.CytoPanelComponent;
 import org.cytoscape.application.swing.CytoPanelName;
+import org.cytoscape.model.CyIdentifiable;
 import org.cytoscape.model.CyNetwork;
+import org.cytoscape.model.CyNetworkManager;
 import org.cytoscape.model.CyNode;
 import org.cytoscape.model.events.SelectedNodesAndEdgesEvent;
 import org.cytoscape.model.events.SelectedNodesAndEdgesListener;
@@ -33,9 +35,11 @@ import org.cytoscape.service.util.CyServiceRegistrar;
 import org.cytoscape.task.read.LoadNetworkFileTaskFactory;
 import org.cytoscape.task.visualize.ApplyVisualStyleTaskFactory;
 import org.cytoscape.view.model.CyNetworkView;
+import org.cytoscape.view.model.CyNetworkViewManager;
+import org.cytoscape.view.model.View;
 import org.xml.sax.SAXException;
 
-public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedNodesAndEdgesListener {
+public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedNodesAndEdgesListener, SetCurrentNetworkListener, SetSelectedNetworksListener , SetCurrentNetworkViewListener , SetSelectedNetworkViewsListener {
 	
 	private static final long serialVersionUID = 8292806967891823933L;
 	public  FormatFileImport formatFileImport;
@@ -79,9 +83,14 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 		this.applyVisualStyleTaskFactory=applyVisualStyleTaskFactory;
 		this.view=view;
 		this.legendPanel = this;
-
+//		cyServiceRegistrar.getService(CyNetworkViewManager.class).reset();
+//		cyServiceRegistrar.getService(CyNetworkManager.class).reset();
 
 		cyServiceRegistrar.registerService(this,SelectedNodesAndEdgesListener.class,new Properties());
+		cyServiceRegistrar.registerService(this,SetCurrentNetworkListener.class,new Properties());
+		cyServiceRegistrar.registerService(this,SetSelectedNetworksListener.class,new Properties());
+		cyServiceRegistrar.registerService(this,SetCurrentNetworkViewListener.class,new Properties());
+		cyServiceRegistrar.registerService(this,SetSelectedNetworkViewsListener.class,new Properties());
 		setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 		JLabel headingLabel = new JLabel();
 		headingLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -175,10 +184,11 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 												.addComponent(siflabel)
 												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 												.addComponent(Siftype, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addGroup(jPanel3Layout.createSequentialGroup()
-												.addComponent(Jsonlabel)
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(Jsontype, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+//										.addGroup(jPanel3Layout.createSequentialGroup()
+//												.addComponent(Jsonlabel)
+//												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//												.addComponent(Jsontype, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+								)
 								.addContainerGap())
 		);
 		jPanel3Layout.setVerticalGroup(
@@ -189,9 +199,10 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 										.addComponent(siflabel)
 										.addComponent(Siftype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(Jsonlabel)
-										.addComponent(Jsontype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+//								.addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//										.addComponent(Jsonlabel)
+//										.addComponent(Jsontype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+//												javax.swing.GroupLayout.PREFERRED_SIZE))
 								.addContainerGap(12, Short.MAX_VALUE))
 		);
 		jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Select Sif and Format File"));
@@ -255,7 +266,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 		});
 
 		exitButton.setForeground(new java.awt.Color(200, 0, 0));
-		exitButton.setText("Exit");
+		exitButton.setText("Legend");
 		exitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -321,7 +332,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 
 												.addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 														.addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														//.addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 														.addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 														.addComponent(submitbutton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 														.addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -339,8 +350,8 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 								.addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+//								.addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+//								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 								.addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 								.addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,10 +417,10 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 	private void submitaction(LegendPanel legendPanel, CyNetwork cyNetwork)  {
 		try {
 			if(SifButtonFlag && !JsonbuttonFlag){
-			CyNetworkUtils.createViewAndRegister(cyServiceRegistrar, this.cyNetwork,formatFileImport);}
+			CyNetworkUtils.createViewAndRegister(cyServiceRegistrar, this.cyNetwork,formatFileImport,this.legendPanel);}
 			else if (!SifButtonFlag && JsonbuttonFlag){
 				System.out.println("entered into json runner");
-				CyNetworkUtils.createViewAndRegister(cyServiceRegistrar, this.cyNetwork);
+				CyNetworkUtils.createViewAndRegister(cyServiceRegistrar, this.cyNetwork,this.legendPanel);
 			}
 		} catch (IOException | TransformerException | ParserConfigurationException | SAXException e) {
 			e.printStackTrace();
@@ -489,7 +500,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 
 
 	public String getTitle() {
-		return "Casual Path Cytoscape App";
+		return "Causal Path";
 	}
 
 
@@ -528,6 +539,15 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 		return statusLabel;
 	}
 
+	public Checkbox getSiftype() {
+		return Siftype;
+	}
+
+	public Checkbox getJsontype() {
+		return Jsontype;
+	}
+
+
 	@Override
 	public void handleEvent(SelectedNodesAndEdgesEvent selectedNodesAndEdgesEvent) {
        if(selectedNodesAndEdgesEvent.nodesChanged()){
@@ -540,13 +560,77 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 			for(CyNode node : selectednode){
 				//System.out.println(node.getSUID());
 				String name = cyNetwork.getRow(node).get(CyNetwork.NAME, String.class);
-				resultPanel.updatetext(name);
-				System.out.println(name);
+				String Totaltext = "";
+				try {
+					String nodetooltipinfo = formatFileImport.getNodeSpecifictooltipinfo().get(name).toString();
+					Totaltext +=  name + " " + nodetooltipinfo +"\n";
+				}
+				catch (Exception e){
+					System.out.println("No tool tip information for the node");
+				}
+
+               try {
+				   HashMap<String, Double> sitetooltipinfo = formatFileImport.getRppasitetooltip().get(name);
+				   for (Map.Entry mapelement : sitetooltipinfo.entrySet()) {
+					   Totaltext += mapelement.getKey() + " " + sitetooltipinfo.get(mapelement.getKey()) + "\n";
+				   }
+			   }
+               catch (Exception e){
+				   System.out.println("no site tooltip info is there");
+			   }
+               if(Objects.equals(Totaltext,"")){
+               	Totaltext ="No ToolTip Information is there\n";
+			   }
+				resultPanel.updatetext(name,Totaltext);
+				//System.out.println(Totaltext);
+				//System.out.println(name);
 			}
 		}
         else {
         	resultPanel.HidePanel();
 		}
+
+	}
+
+
+
+	@Override
+	public void handleEvent(SetCurrentNetworkEvent setCurrentNetworkEvent) {
+		try {
+			CyNetwork selectednetwork = setCurrentNetworkEvent.getNetwork();
+			cyNetwork = selectednetwork;
+			System.out.println(cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME,String.class));
+		} catch (NullPointerException e){
+			JOptionPane.showMessageDialog(null,"select a network");
+		}
+
+	}
+
+	@Override
+	public void handleEvent(SetSelectedNetworksEvent setSelectedNetworksEvent) {
+		Collection <CyNetwork> selectednetwork = setSelectedNetworksEvent.getNetworks();
+
+		for (CyNetwork cyNetwork : selectednetwork){
+			System.out.println(cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME,String.class));
+		}
+	}
+
+	@Override
+	public void handleEvent(SetCurrentNetworkViewEvent setCurrentNetworkViewEvent) {
+		try {
+			CyNetworkView cyNetworkView = setCurrentNetworkViewEvent.getNetworkView();
+
+
+			Collection<View<? extends CyIdentifiable>> cyNetworkCollection = cyNetworkView.getAllViews();
+			System.out.println(cyNetworkView);
+		}
+		catch (NullPointerException e){
+
+		}
+	}
+
+	@Override
+	public void handleEvent(SetSelectedNetworkViewsEvent setSelectedNetworkViewsEvent) {
 
 	}
 }

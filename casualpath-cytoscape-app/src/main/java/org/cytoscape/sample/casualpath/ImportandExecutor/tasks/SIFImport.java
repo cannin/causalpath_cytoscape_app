@@ -5,6 +5,7 @@
  */
 package org.cytoscape.sample.casualpath.ImportandExecutor.tasks;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Scanner;
 
@@ -73,15 +74,19 @@ public class SIFImport {
             if (OS.indexOf("win") >= 0){
                 name = fXmlFile.substring(fXmlFile.lastIndexOf("\\")+1, fXmlFile.length());
             } else name = fXmlFile.substring(fXmlFile.lastIndexOf("/")+1, fXmlFile.length());
+            String[] arr;
 
-            String modelID = name ;
+            String modelID = name;
             //System.out.println("After file print");
             SIFCyNetwork = CyNetworkUtils.readCyNetworkFromFile(cyServiceRegistrar, temp);
             SIFCyNetwork.getRow(SIFCyNetwork).set(CyNetwork.NAME, modelID);
             JOptionPane.showMessageDialog(null, SIFCyNetwork);
            // CyNetworkUtils.createViewAndRegister(cyServiceRegistrar, SIFCyNetwork);
             JProgressBar progressBar = legendPanel.getStatusBar();
-            progressBar.setValue(50);
+
+            progressBar.setValue(33);
+            legendPanel.getStatusLabel().setText("uploaded ...");
+            legendPanel.getStatusLabel().setForeground(new Color(5,102,8));
             JButton formatflleuploadbuttoon = legendPanel.getFormatfileuploadbutton();
             formatflleuploadbuttoon.setEnabled(true);
             JButton submitbutton = legendPanel.getSubmitbutton();
@@ -92,6 +97,8 @@ public class SIFImport {
             JDialog dialog = optionPane.createDialog("Failure");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
+            legendPanel.getStatusLabel().setText("Failed");
+            legendPanel.getStatusLabel().setForeground(Color.RED);
            // ignored.printStackTrace();
         }
         catch (FileNotFoundException e) {
