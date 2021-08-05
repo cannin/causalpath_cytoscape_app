@@ -18,10 +18,7 @@ import javax.xml.transform.TransformerException;
 import org.cytoscape.application.events.*;
 import org.cytoscape.application.swing.CytoPanelComponent;
 import org.cytoscape.application.swing.CytoPanelName;
-import org.cytoscape.model.CyIdentifiable;
-import org.cytoscape.model.CyNetwork;
-import org.cytoscape.model.CyNetworkManager;
-import org.cytoscape.model.CyNode;
+import org.cytoscape.model.*;
 import org.cytoscape.model.events.SelectedNodesAndEdgesEvent;
 import org.cytoscape.model.events.SelectedNodesAndEdgesListener;
 import org.cytoscape.sample.casualpath.CausalPathHelp;
@@ -39,7 +36,9 @@ import org.cytoscape.view.model.CyNetworkViewManager;
 import org.cytoscape.view.model.View;
 import org.xml.sax.SAXException;
 
-public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedNodesAndEdgesListener, SetCurrentNetworkListener, SetSelectedNetworksListener , SetCurrentNetworkViewListener , SetSelectedNetworkViewsListener {
+import static org.cytoscape.sample.casualpath.creatystyle.StyleCreate.Heading;
+
+public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedNodesAndEdgesListener, SetSelectedNetworksListener  {
 	
 	private static final long serialVersionUID = 8292806967891823933L;
 	public  FormatFileImport formatFileImport;
@@ -87,10 +86,9 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 //		cyServiceRegistrar.getService(CyNetworkManager.class).reset();
 
 		cyServiceRegistrar.registerService(this,SelectedNodesAndEdgesListener.class,new Properties());
-		cyServiceRegistrar.registerService(this,SetCurrentNetworkListener.class,new Properties());
+
 		cyServiceRegistrar.registerService(this,SetSelectedNetworksListener.class,new Properties());
-		cyServiceRegistrar.registerService(this,SetCurrentNetworkViewListener.class,new Properties());
-		cyServiceRegistrar.registerService(this,SetSelectedNetworkViewsListener.class,new Properties());
+
 		setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 		JLabel headingLabel = new JLabel();
 		headingLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -556,31 +554,41 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
        //JLabel jLabel = resultPanel.getLabel();
 
 		Collection<CyNode> selectednode = selectedNodesAndEdgesEvent.getSelectedNodes();
+		CyTable nodetable = cyNetwork.getDefaultNodeTable();
         if(selectednode.size() > 0) {
 			for(CyNode node : selectednode){
 				//System.out.println(node.getSUID());
 				String name = cyNetwork.getRow(node).get(CyNetwork.NAME, String.class);
+
 				String Totaltext = "";
-				try {
-					String nodetooltipinfo = formatFileImport.getNodeSpecifictooltipinfo().get(name).toString();
-					Totaltext +=  name + " " + nodetooltipinfo +"\n";
-				}
-				catch (Exception e){
-					System.out.println("No tool tip information for the node");
+				String temp = nodetable.getRow(node.getSUID()).get(Heading,String.class);
+				if(temp.length()>0){
+					String [] Siteinfo = temp.split("\\|");
+					for (int i=0;i<Siteinfo.length ;i++){
+						Totaltext+=(Siteinfo[i]+"\n");
+
+					}
 				}
 
-               try {
-				   HashMap<String, Double> sitetooltipinfo = formatFileImport.getRppasitetooltip().get(name);
-				   for (Map.Entry mapelement : sitetooltipinfo.entrySet()) {
-					   Totaltext += mapelement.getKey() + " " + sitetooltipinfo.get(mapelement.getKey()) + "\n";
-				   }
-			   }
-               catch (Exception e){
-				   System.out.println("no site tooltip info is there");
-			   }
-               if(Objects.equals(Totaltext,"")){
-               	Totaltext ="No ToolTip Information is there\n";
-			   }
+				//System.out.println(Totaltext);
+//				try {
+//					String nodetooltipinfo = formatFileImport.getNodeSpecifictooltipinfo().get(name).toString();
+//					Totaltext +=  name + " " + nodetooltipinfo +"\n";
+//				}
+//				catch (Exception e){
+//					System.out.println("No tool tip information for the node");
+//				}
+//
+//
+//				HashMap<String, Double> sitetooltipinfo = formatFileImport.getRppasitetooltip().get(name);
+//				if(sitetooltipinfo != null) {
+//					for (Map.Entry mapelement : sitetooltipinfo.entrySet()) {
+//						Totaltext += mapelement.getKey() + " " + sitetooltipinfo.get(mapelement.getKey()) + "\n";
+//					}
+//				}
+//               if(Objects.equals(Totaltext,"")){
+//               	Totaltext ="No ToolTip Information is there\n";
+//			   }
 				resultPanel.updatetext(name,Totaltext);
 				//System.out.println(Totaltext);
 				//System.out.println(name);
@@ -594,43 +602,20 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 
 
 
-	@Override
-	public void handleEvent(SetCurrentNetworkEvent setCurrentNetworkEvent) {
-		try {
-			CyNetwork selectednetwork = setCurrentNetworkEvent.getNetwork();
-			cyNetwork = selectednetwork;
-			System.out.println(cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME,String.class));
-		} catch (NullPointerException e){
-			JOptionPane.showMessageDialog(null,"select a network");
-		}
 
-	}
 
 	@Override
 	public void handleEvent(SetSelectedNetworksEvent setSelectedNetworksEvent) {
 		Collection <CyNetwork> selectednetwork = setSelectedNetworksEvent.getNetworks();
 
-		for (CyNetwork cyNetwork : selectednetwork){
+		for (CyNetwork cyNetwork1 : selectednetwork){
+
 			System.out.println(cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME,String.class));
+			cyNetwork = cyNetwork1;
 		}
+		if(selectednetwork.size()==0)
+			JOptionPane.showMessageDialog(null,"Select a network");
 	}
 
-	@Override
-	public void handleEvent(SetCurrentNetworkViewEvent setCurrentNetworkViewEvent) {
-		try {
-			CyNetworkView cyNetworkView = setCurrentNetworkViewEvent.getNetworkView();
 
-
-			Collection<View<? extends CyIdentifiable>> cyNetworkCollection = cyNetworkView.getAllViews();
-			System.out.println(cyNetworkView);
-		}
-		catch (NullPointerException e){
-
-		}
-	}
-
-	@Override
-	public void handleEvent(SetSelectedNetworkViewsEvent setSelectedNetworkViewsEvent) {
-
-	}
 }

@@ -36,12 +36,14 @@ public class ApplyEnhancedGraphics {
     CyNetwork cyNetwork;
     VisualStyle style;
     FormatFileImport formatFileImport;
+    String ToolTipHeading;
 
     public static final String CP_COLUMN_NAMESPACE = "CausalPath Visualizer";
 
-    public ApplyEnhancedGraphics(CyServiceRegistrar cyServiceRegistrar, CyNetwork cyNetwork, VisualStyle style, FormatFileImport formatFileImport) {
+    public ApplyEnhancedGraphics(CyServiceRegistrar cyServiceRegistrar, CyNetwork cyNetwork, VisualStyle style, FormatFileImport formatFileImport, String heading) {
         this.cyServiceRegistrar=cyServiceRegistrar;
         this.style=style;
+        this.ToolTipHeading = heading;
         this.cyNetwork=cyNetwork;
         this.formatFileImport = formatFileImport;
         AvailableCommands availableCommands = cyServiceRegistrar.getService(AvailableCommands.class);
@@ -106,7 +108,7 @@ public class ApplyEnhancedGraphics {
 //        style.addVisualMappingFunction(pMapping);
         style = ApplyEdgeStyle(cyServiceRegistrar,style);
         style = ApplyNodeStyle(cyServiceRegistrar,style,formatFileImport);
-        FillAnnotation fillAnnotation = new FillAnnotation(style,formatFileImport,vizCol,cyNetwork,cyServiceRegistrar);
+        FillAnnotation fillAnnotation = new FillAnnotation(style,formatFileImport,vizCol,cyNetwork,cyServiceRegistrar,ToolTipHeading);
         style = fillAnnotation.RunAlgorithm(style);
 //        VisualProperty customGraphicsP = lex.lookup(CyNode.class, "NODE_CUSTOMGRAPHICS_POSITION_1");
 //        Object upperLeft = customGraphicsP.parseSerializableString("NE,SE,c,0.00,0.00");

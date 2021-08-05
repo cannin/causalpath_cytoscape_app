@@ -33,12 +33,14 @@ public class FillAnnotation {
     public  HashMap<String, Integer> RppasiteCount;
     public  String Graphicsname = "NODE_CUSTOMGRAPHICS_";
     CyServiceRegistrar cyServiceRegistrar;
+    String ToolTipheading;
     public HashMap<Integer,String> AlgoWisePosition = new HashMap<>();
-    public FillAnnotation(VisualStyle style, FormatFileImport formatFileImport, String vizCol, CyNetwork cyNetwork, CyServiceRegistrar cyServiceRegistrar){
+    public FillAnnotation(VisualStyle style, FormatFileImport formatFileImport, String vizCol, CyNetwork cyNetwork, CyServiceRegistrar cyServiceRegistrar,String ToolTipColumn){
       this.style= style;
       this.cyServiceRegistrar = cyServiceRegistrar;
       this.formatFileImport = formatFileImport;
       this.vizcol = vizCol;
+      this.ToolTipheading = ToolTipColumn;
       this.cyNetwork = cyNetwork;
         NodesiteBorderrgbValueHashMap =  formatFileImport.getNodesiteBorderrgbValueHashMap();
          NodesitergbValueHashMap = formatFileImport.getNodesitergbValueHashMap();
@@ -75,8 +77,27 @@ public class FillAnnotation {
         }
 
 
+
         for(CyNode node : cyNetwork.getNodeList()) {
             String name = cyNetwork.getRow(node).get(CyNetwork.NAME, String.class);
+            String Totaltext = "";
+            try {
+                String nodetooltipinfo = formatFileImport.getNodeSpecifictooltipinfo().get(name).toString();
+                Totaltext +=  name + " " + nodetooltipinfo +"|";
+            }
+            catch (Exception e){
+                System.out.println("No tool tip information for the node");
+            }
+
+
+            HashMap<String, Double> sitetooltipinfo = formatFileImport.getRppasitetooltip().get(name);
+            if(sitetooltipinfo != null) {
+                for (Map.Entry mapelement : sitetooltipinfo.entrySet()) {
+                    Totaltext += mapelement.getKey() + " " + sitetooltipinfo.get(mapelement.getKey()) + "|";
+                }
+            }
+            nodeTable.getRow(node.getSUID()).set(ToolTipheading,Totaltext);
+
             try {
 
                 //System.out.println("size->" + RppasiteCount.get(name));

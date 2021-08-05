@@ -39,6 +39,7 @@ public class StyleCreate {
     public static final String CYNODETABLE_INNERVIZCOL=CYNODETABLE_VIZCOL+" LineChart";
     String vizCol=CYNODETABLE_INNERVIZCOL;
     public static final String CP_COLUMN_NAMESPACE = "CausalPath Visualizer";
+    public  static String Heading = "CausalPath ToolInfo";
 
     public Color Greencolor = new Color(44, 162, 44);
     public  Color BlackColor = new Color(50,50,50) ;
@@ -134,6 +135,7 @@ public class StyleCreate {
                 nodeTable.createColumn(temp, String.class, false);
             }
         }
+        nodeTable.createColumn(Heading,String.class,false);
 //        for(CyEdge edge : cyNetwork.getEdgeList()) {
 //            String [] edgeproperty = cyNetwork.getRow(edge).get(CyNetwork.NAME,String.class).split("\\s+");
 //
@@ -141,7 +143,7 @@ public class StyleCreate {
 //            System.out.println(edgepropertymiddle);
 //        }
 
-        ApplyEnhancedGraphics applyEnhancedGraphics = new ApplyEnhancedGraphics(cyServiceRegistrar,cyNetwork,vs,formatFileImport);
+        ApplyEnhancedGraphics applyEnhancedGraphics = new ApplyEnhancedGraphics(cyServiceRegistrar,cyNetwork,vs,formatFileImport,Heading);
 //        vs = applyEnhancedGraphics.perform("NODE_CUSTOMGRAPHICS_1",labeltextSettings1,0,vizCol+0);
 //        LabeltextSettings labeltextSettings2 = new LabeltextSettings();
 //        String hex = String.format("#%02X%02X%02X", 44, 162, 44);
