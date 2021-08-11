@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week Eight, Apply Enhanced Graphics to Network]
+Title:  [Week Eight, Test the Application]
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
