@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week Seven, Apply Enhanced Graphics to Network]
+Title:  [Week Seven, Creation of Result Panel]
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
