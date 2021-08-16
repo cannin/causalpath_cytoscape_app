@@ -1,3 +1,5 @@
+![maven_build](https://github.com/cannin/causalpath_cytoscape_app/actions/workflows/maven_build/badge.svg)
+
 # causalpath_cytoscape_app
 # This branch is for all the demo files.
 ## Instruction to Run the causalpath_cytoscape_app
