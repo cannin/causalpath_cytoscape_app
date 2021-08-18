@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-1.15.0
+Bnd-LastModified: 1629324964451
+Import-Package: javax.swing,javax.swing.border,javax.swing.filechooser,j
+ avax.xml.parsers,javax.xml.transform,org.cytoscape.application.events;v
+ ersion="[3.7,4)",org.cytoscape.application.swing;version="[3.7,4)",org.
+ cytoscape.command;version="[3.7,4)",org.cytoscape.io.read;version="[3.7
+ ,4)",org.cytoscape.model;version="[3.7,4)",org.cytoscape.model.events;v
+ ersion="[3.7,4)",org.cytoscape.service.util;version="[3.7,4)",org.cytos
+ cape.session;version="[3.7,4)",org.cytoscape.view.model;version="[3.7,4
+ )",org.cytoscape.view.presentation;version="[3.7,4)",org.cytoscape.view
+ .presentation.property;version="[3.7,4)",org.cytoscape.view.presentatio
+ n.property.values;version="[3.7,4)",org.cytoscape.view.vizmap;version="
+ [3.7,4)",org.cytoscape.view.vizmap.mappings;version="[3.7,4)",org.cytos
+ cape.work;version="[3.7,4)",org.osgi.framework;version="[1.5,2)",org.xm
+ l.sax
+Bundle-ClassPath: .,gson-2.3.1.jar
+Bundle-Name: causalpath-cytoscape-app
+Embed-Dependency: gson
+Bundle-Activator: org.biopax.cytoscape.causalpath.CyActivator
+Bundle-SymbolicName: causalpath
+Bundle-Version: 1.0
+Built-By: PRITAM PC
+Build-Jdk: 16
+
