@@ -1,5 +1,4 @@
 name: maven_build
-
 on: [push]
 
 jobs:
