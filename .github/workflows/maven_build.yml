@@ -18,5 +18,6 @@ jobs:
         run: |
            cd causalpath-cytoscape-app
            mvn clean
+           mvn compile
    
          
