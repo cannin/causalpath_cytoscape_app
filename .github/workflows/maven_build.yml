@@ -17,6 +17,6 @@ jobs:
       - name: Build with Maven
         run: |
            cd causalpath-cytoscape-app
-           mvn compile
+           mvn clean
    
          
