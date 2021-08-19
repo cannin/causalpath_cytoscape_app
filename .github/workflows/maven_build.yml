@@ -23,6 +23,8 @@ jobs:
         run: |
           echo "::set-env name=VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
           echo "::set-output name=SHA_SHORT::$(git rev-parse --short HEAD)"
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
