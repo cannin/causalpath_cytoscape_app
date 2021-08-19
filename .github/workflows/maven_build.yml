@@ -28,6 +28,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
-          name: ${{steps.get_version.outputs.SHA_SHORT}}
+          name: 'latest'
+          tag_name: 'latest'
           prerelease: true
           files: causalpath-cytoscape-app-${{steps.get_version.outputs.VERSION}}.jar
