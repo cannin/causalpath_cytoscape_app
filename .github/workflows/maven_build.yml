@@ -2,23 +2,30 @@ name: Build
 
 on: [push]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 16
+      - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           java-version: '16'
           distribution: 'adopt'
       - name: Build with Maven
         run: |
-           cd causalpath-cytoscape-app
-           mvn compile
-           mvn clean install
-           
-   
-         
+          cd causalpath-cytoscape-app
+          mvn compile
+          mvn clean install
+      - name: Get Version 
+        id: get_version 
+        run: |
+          echo "::set-env name=VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
+          echo "::set-output name=SHA_SHORT::$(git rev-parse --short HEAD)"
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with: 
+          name: ${{steps.get_version.outputs.SHA_SHORT}}
+          prerelease: true
+          files: causalpath-cytoscape-app-${{steps.get_version.outputs.VERSION}}.jar
