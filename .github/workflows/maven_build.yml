@@ -24,6 +24,7 @@ jobs:
         run: |
           ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
           cp /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target/*.jar causalpath-cytoscape-app-latest.jar 
+          ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
