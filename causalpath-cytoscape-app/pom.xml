@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <bundle.symbolicName>causalpath</bundle.symbolicName>
-        <bundle.namespace>org.biopax.cytoscape.causalpath</bundle.namespace>
+        <bundle.symbolicName>CausalpathCytoscapeApp</bundle.symbolicName>
+        <bundle.namespace>org.biopax.cytoscape.causalpath_cytoscape_app</bundle.namespace>
         <cytoscape.api.version>3.7.0</cytoscape.api.version>
 
         <maven-bundle-plugin.version>3.5.0</maven-bundle-plugin.version>
