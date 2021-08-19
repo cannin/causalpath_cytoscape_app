@@ -12,7 +12,7 @@
     </properties>
 
     <groupId>org.biopax.cytoscape</groupId>
-    <artifactId>causalpath</artifactId>
+    <artifactId>causalpath-cytoscape-app</artifactId>
     <packaging>bundle</packaging>
     <version>1.0</version>
 
