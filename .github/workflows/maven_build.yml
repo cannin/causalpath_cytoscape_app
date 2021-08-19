@@ -21,14 +21,12 @@ jobs:
       - name: Get Version 
         id: get_version 
         run: |
-          echo "::set-env name=VERSION::$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)"
-          echo "::set-output name=SHA_SHORT::$(git rev-parse --short HEAD)"
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+          cd causalpath-cytoscape-app
+          cp causalpath-cytoscape-app-*.jar ../causalpath-cytoscape-app-latest.jar 
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
           name: 'latest'
           tag_name: 'latest'
           prerelease: true
-          files: causalpath-cytoscape-app-${{steps.get_version.outputs.VERSION}}.jar
+          files: causalpath-cytoscape-app-latest.jar
