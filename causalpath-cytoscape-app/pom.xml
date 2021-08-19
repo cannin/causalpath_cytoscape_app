@@ -14,7 +14,7 @@
     <groupId>org.biopax.cytoscape</groupId>
     <artifactId>causalpath-cytoscape-app</artifactId>
     <packaging>bundle</packaging>
-    <version>1.0</version>
+    <version>0.99.1</version>
 
     <name>causalpath-cytoscape-app</name>
 
