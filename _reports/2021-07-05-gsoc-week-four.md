@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week four | Apply Style to Network"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week four | Apply Style to Network"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week is about the getting input from the format file and applying styles to the network. 
