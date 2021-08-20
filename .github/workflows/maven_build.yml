@@ -22,13 +22,16 @@ jobs:
       - name: Get Version 
         id: get_version 
         run: |
-          ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
-          cp /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target/*.jar causalpath-cytoscape-app-latest.jar 
-          ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
+          pwd
+          #ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
+          #cp /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target/*.jar causalpath-cytoscape-app-latest.jar 
+          #ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
+          find . -name 'causalpath-cytoscape*.jar' -exec bash -c 'mv $0 ./causalpath-cytoscape-app-latest.jar' {} \;
+          ls
       - name: Release
         uses: softprops/action-gh-release@v1
         with: 
           name: 'latest'
           tag_name: 'latest'
           prerelease: true
-          files: /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target/causalpath-cytoscape-app-latest.jar
+          files: causalpath-cytoscape-app-latest.jar
