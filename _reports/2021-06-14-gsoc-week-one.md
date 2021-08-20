@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week one | Let's Start Coding"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week one | Let's Start Coding"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 
