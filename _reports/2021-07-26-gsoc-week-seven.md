@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week Seven | Creation of Result Panel"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week Seven | Creation of Result Panel"
+tags: [gsoc, Weekly Report, Coding Period]
+Author: Pritam Saha
 ---
 ## Coding Phase
 This week is about modifying enhanced graphics in the Cytoscape and create a result panel to show selected node's details. 
