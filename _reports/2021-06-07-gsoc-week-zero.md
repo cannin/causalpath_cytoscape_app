@@ -1,7 +1,7 @@
 ---
 Layout: "post"
 Title:  "Week Zero | Welcome GSoC"
-Tags: [GSoC, Weekly Report, Community Bonding]
+Tags: [gsoc, Weekly Report, Community Bonding]
 Author: "Pritam Saha"
 ---
 
