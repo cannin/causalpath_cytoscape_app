@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK
+      - name: Set up JDK 16
         uses: actions/setup-java@v2
         with:
           java-version: '16'
@@ -19,13 +19,9 @@ jobs:
           pwd
           mvn compile
           mvn clean install
-      - name: Get Version 
-        id: get_version 
+      - name: Move Artifacts
         run: |
           pwd
-          #ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
-          #cp /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target/*.jar causalpath-cytoscape-app-latest.jar 
-          #ls /home/runner/work/causalpath_cytoscape_app/causalpath_cytoscape_app/causalpath-cytoscape-app/target
           find . -name 'causalpath-cytoscape*.jar' -exec bash -c 'mv $0 ./causalpath-cytoscape-app-latest.jar' {} \;
           ls
       - name: Release
