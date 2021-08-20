@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week Nine | Test and Modify the Application"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week Nine | Test and Modify the Application"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week is similar to the previous one where it is more about the enhancement of the application
