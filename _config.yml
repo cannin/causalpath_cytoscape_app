@@ -1,1 +1,5 @@
 theme: jekyll-theme-minimal
+title: CausalPath Cytoscape App GSoC 2021
+collections:
+  reports:
+    output: true
