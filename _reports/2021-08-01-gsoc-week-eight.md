@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week Eight | Test the Application"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week Eight | Test the Application"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week is about testing the app on real data and make some modifications to the visualization and update the result panel. 
