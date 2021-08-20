@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week Two | Development of Interface"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week Two | Development of Interface"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week is about the full-fledged development of different functionalities of the user interface and start to work on running the causal path algorithm from the app.
