@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week three, Visualization of Network]
+Title:  "Week three | Visualization of Network"
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
