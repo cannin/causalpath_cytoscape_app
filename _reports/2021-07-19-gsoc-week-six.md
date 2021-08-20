@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week Six, Apply Enhanced Graphics to Network]
+Title:  "Week Six | Apply Enhanced Graphics to Network"
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
