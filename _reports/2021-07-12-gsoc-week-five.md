@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week five, Apply Style to Network]
+Title:  "Week five | Apply Style to Network"
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
