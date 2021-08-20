@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week Eight, Test the Application]
+Title:  "Week Eight | Test the Application"
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
