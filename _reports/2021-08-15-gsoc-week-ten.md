@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week Ten | Test and Modify the Application"
+title:  "Week Ten | Documentation and Project Report Creation"
 tags: [gsoc, Weekly Report, Coding Period]
 author: Pritam Saha
 ---
