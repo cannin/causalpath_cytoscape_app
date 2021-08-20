@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week five | Apply Style to Network"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week five | Apply Style to Network"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week is about getting the styles from the format/JSON file and apply them programmatically to the current network. 
