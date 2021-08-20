@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week Seven | Creation of Result Panel"
+title:  "Week Seven | Development of Result Panel"
 tags: [gsoc, Weekly Report, Coding Period]
 Author: Pritam Saha
 ---
