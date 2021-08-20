@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week Six | Apply Enhanced Graphics to Network"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week Six | Apply Enhanced Graphics to Network"
+tags: [gsoc, Weekly Report, Coding Period]
+Author: Pritam Saha
 ---
 ## Coding Phase
 This week is about exploring enhanced graphics in the Cytoscape and try to apply them programmatically. 
