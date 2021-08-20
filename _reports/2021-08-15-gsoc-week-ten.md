@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week Ten, Test and Modify the Application]
+Title:  "Week Ten | Test and Modify the Application"
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
