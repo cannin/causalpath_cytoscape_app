@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week Ten | Test and Modify the Application"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week Ten | Test and Modify the Application"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week concludes the GSoC coding period. This week is mostly about improving different functionalities and create final reports for the project. 
