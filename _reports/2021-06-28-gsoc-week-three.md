@@ -1,8 +1,8 @@
 ---
-Layout: [post]
-Title:  "Week three | Visualization of Network"
-Tags: [GSoC, Weekly Report, Coding Period]
-Author: [Pritam Saha]
+layout: post
+title:  "Week three | Visualization of Network"
+tags: [gsoc, Weekly Report, Coding Period]
+author: Pritam Saha
 ---
 ## Coding Phase
 This week is about the creating the visualization of network and continue working on running the causal path algorithm from the app.
