@@ -1,6 +1,6 @@
 ---
 Layout: [post]
-Title:  [Week four, Apply Style to Network]
+Title:  "Week four | Apply Style to Network"
 Tags: [GSoC, Weekly Report, Coding Period]
 Author: [Pritam Saha]
 ---
