@@ -1,0 +1,33 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 16
+        uses: actions/setup-java@v2
+        with:
+          java-version: '16'
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: |
+          cd causalpath-cytoscape-app
+          pwd
+          mvn compile
+          mvn clean install
+      - name: Move Artifacts
+        run: |
+          pwd
+          find . -name 'causalpath-cytoscape*.jar' -exec bash -c 'mv $0 ./causalpath-cytoscape-app-latest.jar' {} \;
+          ls
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with: 
+          name: 'latest'
+          tag_name: 'latest'
+          prerelease: true
+          files: causalpath-cytoscape-app-latest.jar
