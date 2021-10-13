@@ -21,7 +21,7 @@ public class CreateLegendAction extends AbstractCyAction {
     public CreateLegendAction(CySwingApplication desktopApp,
                               LegendPanel myCytoPanel, CyServiceRegistrar cyServiceRegistrar) {
 
-        super("CausalPath App");
+        super("CausalPath");
         setPreferredMenu("Apps");
 
         this.desktopApp = desktopApp;
