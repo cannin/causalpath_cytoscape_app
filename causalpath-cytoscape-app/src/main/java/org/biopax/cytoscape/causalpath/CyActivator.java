@@ -42,7 +42,7 @@ public class CyActivator extends AbstractCyActivator {
         registerService(bc, controlPanelAction, CyAction.class, new Properties());
 
 
-        System.out.println("CausalPath APP started");
+        System.out.println("CausalPath App started");
 
     }
 
