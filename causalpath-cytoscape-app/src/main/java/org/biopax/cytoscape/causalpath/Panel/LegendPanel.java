@@ -48,16 +48,16 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     public FormatFileImport formatFileImport;
     public CyServiceRegistrar cyServiceRegistrar;
     public CyNetwork cyNetwork;
-    JButton networkfileuploadbutton = new JButton("Upload SIF File");
-    JButton formatfileuploadbutton = new JButton("Upload .format File");
-    JButton Jsonfileuploadbutton = new JButton("Upload Json File");
+    JButton networkfileuploadbutton = new JButton("Load SIF File");
+    JButton formatfileuploadbutton = new JButton("Load .format File");
+    JButton Jsonfileuploadbutton = new JButton("Load JSON File");
     JButton submitbutton = new JButton("Submit");
     JButton helpButton = new JButton();
     JButton exitButton = new JButton();
     Checkbox Siftype = new Checkbox();
     Checkbox Jsontype = new Checkbox();
-    JLabel siflabel = new JLabel("Check to upload file in SIF format");
-    JLabel Jsonlabel = new JLabel("Check to upload file in Json format");
+    JLabel siflabel = new JLabel("Check to load file in SIF format");
+    JLabel Jsonlabel = new JLabel("Check to load file in JSON format");
     JPanel jPanel3 = new JPanel();
     JPanel jPanel4 = new JPanel();
     JPanel jPanel6 = new JPanel();
@@ -291,7 +291,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Status Bar"));
 
 
-        statusLabel.setText("Upload status");
+        statusLabel.setText("Load Status");
 
         GroupLayout jPanel7Layout = new GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -476,7 +476,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
             JDialog dialog = optionPane.createDialog("Failure");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Upload Failed", "Fail Message", 1);
+            JOptionPane.showMessageDialog(null, "Load Failed", "Fail Message", 1);
             transformerConfigurationException.printStackTrace();
         }
     }
