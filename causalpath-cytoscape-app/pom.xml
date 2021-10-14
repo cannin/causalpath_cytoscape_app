@@ -238,11 +238,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.6</version>
         </dependency>
-             
-        <dependency>
-	    <groupId>com.github.cannin</groupId>
-	    <artifactId>causalpath_cytoscape_app</artifactId>
-	    <version>Tag</version>
-         </dependency>
+
     </dependencies>
 </project>
