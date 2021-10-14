@@ -13,6 +13,8 @@ jobs:
         with:
           java-version: '16'
           distribution: 'adopt'
+      - name: Get SHA Hash Key
+        run: echo ${{ github.sha }} > release_github_sha.txt
       - name: Build with Maven
         run: |
           cd causalpath-cytoscape-app
