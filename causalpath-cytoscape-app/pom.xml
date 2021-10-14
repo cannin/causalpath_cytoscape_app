@@ -240,8 +240,8 @@
         </dependency>
              
         <dependency>
-	    <groupId>com.github.User</groupId>
-	    <artifactId>Repo</artifactId>
+	    <groupId>com.github.cannin</groupId>
+	    <artifactId>causalpath_cytoscape_app</artifactId>
 	    <version>Tag</version>
          </dependency>
     </dependencies>
