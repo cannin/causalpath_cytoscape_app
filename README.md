@@ -1,7 +1,7 @@
 ![Build](https://github.com/cannin/causalpath_cytoscape_app/actions/workflows/maven_build.yml/badge.svg)
 
 
-# causalpath_cytoscape_app
+# CausalPath Cytoscape App
 
 ## Instruction to Run the causalpath_cytoscape_app
 
