@@ -1,0 +1,6 @@
+jdk:
+  - openjdk11
+install:
+   - cd causalpath-cytoscape-app
+   - mvn compile
+   - mvn clean install
