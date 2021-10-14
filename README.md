@@ -3,7 +3,7 @@
 
 # CausalPath Cytoscape App
 
-## Instruction to Run the causalpath_cytoscape_app
+## Instructions to Run the CausalPath Cytoscape App
 
 ### Pre- Requisites
 ```
