@@ -1,8 +1,17 @@
 Manifest-Version: 1.0
+Bnd-LastModified: 1634586117650
+Build-Jdk: 16.0.1
+Built-By: pritams
+Bundle-Activator: org.biopax.cytoscape.causalpath.CyActivator
+Bundle-ClassPath: .,gson-2.3.1.jar
 Bundle-ManifestVersion: 2
+Bundle-Name: causalpath
+Bundle-SymbolicName: causalpath
+Bundle-Version: 1.0.1
 Created-By: Apache Maven Bundle Plugin
-Tool: Bnd-1.15.0
-Bnd-LastModified: 1629324964451
+Embed-Dependency: gson
+Embedded-Artifacts: gson-2.3.1.jar;g="com.google.code.gson";a="gson";v="
+ 2.3.1"
 Import-Package: javax.swing,javax.swing.border,javax.swing.filechooser,j
  avax.xml.parsers,javax.xml.transform,org.cytoscape.application.events;v
  ersion="[3.7,4)",org.cytoscape.application.swing;version="[3.7,4)",org.
@@ -16,12 +25,5 @@ Import-Package: javax.swing,javax.swing.border,javax.swing.filechooser,j
  [3.7,4)",org.cytoscape.view.vizmap.mappings;version="[3.7,4)",org.cytos
  cape.work;version="[3.7,4)",org.osgi.framework;version="[1.5,2)",org.xm
  l.sax
-Bundle-ClassPath: .,gson-2.3.1.jar
-Bundle-Name: causalpath-cytoscape-app
-Embed-Dependency: gson
-Bundle-Activator: org.biopax.cytoscape.causalpath.CyActivator
-Bundle-SymbolicName: causalpath
-Bundle-Version: 1.0
-Built-By: PRITAM PC
-Build-Jdk: 16
-
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.5.0.201709291849

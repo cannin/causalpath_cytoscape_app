@@ -78,7 +78,7 @@ public class JsonImport {
             } else name = jsonpath.substring(jsonpath.lastIndexOf("/") + 1, jsonpath.length());
             String modelID = name;
 
-            cyNetwork = CyNetworkUtils.readCyNetworkFromFile(cyServiceRegistrar, temp);
+            //cyNetwork = CyNetworkUtils.readCyNetworkFromFile(cyServiceRegistrar, temp);
             cyNetwork.getRow(cyNetwork).set(CyNetwork.NAME, modelID);
             JProgressBar jProgressBar = legendPanel.getStatusBar();
             jProgressBar.setValue(50);

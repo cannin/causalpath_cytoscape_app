@@ -34,6 +34,8 @@ import org.cytoscape.service.util.CyServiceRegistrar;
 import org.cytoscape.task.read.LoadNetworkFileTaskFactory;
 import org.cytoscape.task.visualize.ApplyVisualStyleTaskFactory;
 import org.cytoscape.view.model.CyNetworkView;
+import org.cytoscape.work.SynchronousTaskManager;
+import org.cytoscape.work.Tunable;
 import org.xml.sax.SAXException;
 
 import static org.biopax.cytoscape.causalpath.ImportandExecutor.tasks.SIFImport.Edge_Info_col_Name;
@@ -50,14 +52,14 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     public CyNetwork cyNetwork;
     JButton networkfileuploadbutton = new JButton("Load SIF File");
     JButton formatfileuploadbutton = new JButton("Load .format File");
-    JButton Jsonfileuploadbutton = new JButton("Load JSON File");
+    JButton Jsonfileuploadbutton = new JButton("Load Json File");
     JButton submitbutton = new JButton("Submit");
     JButton helpButton = new JButton();
     JButton exitButton = new JButton();
     Checkbox Siftype = new Checkbox();
     Checkbox Jsontype = new Checkbox();
     JLabel siflabel = new JLabel("Check to load file in SIF format");
-    JLabel Jsonlabel = new JLabel("Check to load file in JSON format");
+    JLabel Jsonlabel = new JLabel("Check to load file in Json format");
     JPanel jPanel3 = new JPanel();
     JPanel jPanel4 = new JPanel();
     JPanel jPanel6 = new JPanel();
@@ -67,6 +69,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     Boolean SifButtonFlag = false;
     Boolean JsonbuttonFlag = false;
     Boolean Networkflag = false;
+    Boolean NetworksetFlag=false;
     JProgressBar statusBar = new javax.swing.JProgressBar();
     JLabel statusLabel = new javax.swing.JLabel();
 
@@ -75,10 +78,12 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     public ResultPanel resultPanel;
 
     public CyActivator cyActivator;
-
-    public LegendPanel(CyServiceRegistrar cyServiceRegistrar, ResultPanel resultPanel) {
+    public  SynchronousTaskManager synchronousTaskManager;
+    @Tunable(description = "networkName", context = "nogui")
+    public String networkName ;
+    public LegendPanel(CyServiceRegistrar cyServiceRegistrar, ResultPanel resultPanel, SynchronousTaskManager synchronousTaskManager) {
         this.cyServiceRegistrar = cyServiceRegistrar;
-
+        this.synchronousTaskManager = synchronousTaskManager;
         this.resultPanel = resultPanel;
 
 
@@ -117,8 +122,22 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         networkfileuploadbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(Networkflag){
 
-                SifUploadAction(legendPanel);
+                    JOptionPane optionPane = new JOptionPane("Please Unselect the current network to proceed from the seleted Networks", JOptionPane.INFORMATION_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Information");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                    return ;
+                }
+               // Networkflag=true;
+                if(!NetworksetFlag){
+                SifUploadAction(legendPanel,synchronousTaskManager,true);
+                NetworksetFlag=true;
+
+                }
+                else
+                    SifUploadAction(legendPanel,synchronousTaskManager,false);
             }
         });
         formatfileuploadbutton.addActionListener(new ActionListener() {
@@ -291,7 +310,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Status Bar"));
 
 
-        statusLabel.setText("Load Status");
+        statusLabel.setText("Upload status");
 
         GroupLayout jPanel7Layout = new GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -309,9 +328,9 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
                         .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(statusBar, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                //.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(statusLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
+                        )
         );
         GroupLayout mainPanelLayout = new GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -365,7 +384,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -445,7 +464,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         }
     }
 
-    private void SifUploadAction(LegendPanel legendPanel) {
+    private void SifUploadAction(LegendPanel legendPanel,SynchronousTaskManager synchronousTaskManager,boolean flag) {
         String path = "";
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -460,8 +479,9 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 
 
         }
+        System.out.println("path" + path);
         try {
-            SIFImport sifImport = new SIFImport(selectedFile, path, cyServiceRegistrar, this.legendPanel);
+            SIFImport sifImport = new SIFImport(selectedFile, path, cyServiceRegistrar, this.legendPanel,synchronousTaskManager,flag);
             cyNetwork = sifImport.getSIFCyNetwork();
 
 
@@ -476,7 +496,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
             JDialog dialog = optionPane.createDialog("Failure");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Load Failed", "Fail Message", 1);
+            JOptionPane.showMessageDialog(null, "Upload Failed", "Fail Message", 1);
             transformerConfigurationException.printStackTrace();
         }
     }
@@ -625,8 +645,17 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 
                 cyNetwork = cyNetwork1;
             }
-            if (selectednetwork.size() == 0 && Networkflag)
-                JOptionPane.showMessageDialog(null, "Select a network");
+            if (selectednetwork.size() == 0 && Networkflag){
+                JOptionPane.showMessageDialog(null, "Select or Create a network");
+                Networkflag=false;
+            }
+            else if(selectednetwork.size()>1){
+
+                JOptionPane optionPane = new JOptionPane("Please Unselect the current network to proceed from the seleted Networks", JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog("Information");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
         } catch (Exception e) {
             e.printStackTrace();
 

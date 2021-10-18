@@ -18,7 +18,7 @@ import org.cytoscape.view.presentation.property.EdgeBendVisualProperty;
 import org.cytoscape.view.presentation.property.values.ArrowShape;
 import org.cytoscape.view.vizmap.*;
 import org.cytoscape.view.vizmap.mappings.PassthroughMapping;
-import org.cytoscape.work.SynchronousTaskManager;
+
 
 import java.awt.*;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class StyleCreate {
-     SynchronousTaskManager synchronousTaskManager;
+
      CyServiceRegistrar cyServiceRegistrar;
      FormatFileImport formatFileImport;
     RGBValue Allnoodescolor;
@@ -41,8 +41,8 @@ public class StyleCreate {
 
     public Color Greencolor = new Color(44, 162, 44);
     public  Color BlackColor = new Color(50,50,50) ;
-    public StyleCreate(SynchronousTaskManager synchronousTaskManager, CyServiceRegistrar cyServiceRegistrar, FormatFileImport formatFileImport, CyNetwork cyNetwork){
-        this.synchronousTaskManager = synchronousTaskManager;
+    public StyleCreate( CyServiceRegistrar cyServiceRegistrar, FormatFileImport formatFileImport, CyNetwork cyNetwork){
+
         this.cyServiceRegistrar = cyServiceRegistrar;
         this.formatFileImport = formatFileImport;
         this.Allnoodescolor = formatFileImport.getAllNodesColor();
@@ -51,8 +51,8 @@ public class StyleCreate {
         this.cyNetwork = cyNetwork;
 
     }
-    public StyleCreate(SynchronousTaskManager synchronousTaskManager, CyServiceRegistrar cyServiceRegistrar, RGBValue AllNodesColor, CyNetwork cyNetwork){
-        this.synchronousTaskManager = synchronousTaskManager;
+    public StyleCreate(CyServiceRegistrar cyServiceRegistrar, RGBValue AllNodesColor, CyNetwork cyNetwork){
+
         this.cyServiceRegistrar = cyServiceRegistrar;
         this.Allnoodescolor = AllNodesColor;
         this.cyNetwork = cyNetwork;

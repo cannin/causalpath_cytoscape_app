@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.logging.Level;
 
 
+import org.apache.poi.ss.formula.functions.T;
 import org.biopax.cytoscape.causalpath.ImportandExecutor.tasks.FormatFileImport;
 import org.biopax.cytoscape.causalpath.ImportandExecutor.utils.CommandExecutor;
 import org.biopax.cytoscape.causalpath.Panel.LegendPanel;
@@ -27,6 +28,7 @@ import org.cytoscape.view.model.CyNetworkViewManager;
 import org.cytoscape.work.SynchronousTaskManager;
 import org.cytoscape.work.TaskIterator;
 
+import org.cytoscape.work.Tunable;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -107,14 +109,14 @@ public class CyNetworkUtils {
         }
 
         // Apply visual style
-        SynchronousTaskManager manager = cyServiceRegistrar.getService(SynchronousTaskManager.class);
-        StyleCreate styleCreate = new StyleCreate(manager, cyServiceRegistrar, formatFileImport, cyNetwork);
+
+        StyleCreate styleCreate = new StyleCreate(cyServiceRegistrar, formatFileImport, cyNetwork);
         styleCreate.createStyle(myView);
 
         networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
 
         // Apply layout
-        CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar, legendPanel, 0);
+        CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar, legendPanel);
 
     }
 
@@ -145,22 +147,24 @@ public class CyNetworkUtils {
             LOGGER.log(Level.INFO, "networkView already existed.");
         }
 
-        SynchronousTaskManager manager = cyServiceRegistrar.getService(SynchronousTaskManager.class);
-        StyleCreate styleCreate = new StyleCreate(manager, cyServiceRegistrar, new RGBValue(255, 255, 255), cyNetwork);
+
+        StyleCreate styleCreate = new StyleCreate(cyServiceRegistrar, new RGBValue(255, 255, 255), cyNetwork);
         styleCreate.createStyle(myView);
 
 
         // Apply layout
         networkName = cyNetwork.getRow(cyNetwork).get(CyNetwork.NAME, String.class);
 
-        CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar, legendPanel, 1);
+        CommandExecutor.execute("layout force-directed network=\"" + networkName + "\"", cyServiceRegistrar, legendPanel);
 
     }
 
 
-    public static CyNetwork readCyNetworkFromFile(CyServiceRegistrar cyServiceRegistrar, File cyNetworkFile) {
+    public static CyNetwork readCyNetworkFromFile(CyServiceRegistrar cyServiceRegistrar, File cyNetworkFile, SynchronousTaskManager synchronousTaskManager) {
         CyNetworkReader networkReader = cyServiceRegistrar.getService(CyNetworkReaderManager.class).getReader(cyNetworkFile.toURI(), cyNetworkFile.getName());
-        CommandExecutor.execute(new TaskIterator(networkReader), cyServiceRegistrar, 0);
+        CommandExecutor.execute(new TaskIterator(networkReader), cyServiceRegistrar,synchronousTaskManager);
+
+        System.out.println(networkReader.getNetworks().length);
         return networkReader.getNetworks()[0];
     }
 

@@ -8,6 +8,7 @@ import org.cytoscape.application.swing.CytoPanel;
 import org.cytoscape.application.swing.CytoPanelName;
 import org.cytoscape.application.swing.CytoPanelState;
 import org.cytoscape.service.util.CyServiceRegistrar;
+import org.cytoscape.work.Tunable;
 
 
 public class CreateLegendAction extends AbstractCyAction {
@@ -21,7 +22,7 @@ public class CreateLegendAction extends AbstractCyAction {
     public CreateLegendAction(CySwingApplication desktopApp,
                               LegendPanel myCytoPanel, CyServiceRegistrar cyServiceRegistrar) {
 
-        super("CausalPath");
+        super("CausalPath ");
         setPreferredMenu("Apps");
 
         this.desktopApp = desktopApp;
