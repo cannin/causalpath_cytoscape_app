@@ -1,10 +1,13 @@
 ![Build](https://github.com/cannin/causalpath_cytoscape_app/actions/workflows/maven_build.yml/badge.svg)
 
-
 # CausalPath Cytoscape App
 
-## Instructions to Run the CausalPath Cytoscape App
+This is a Cytoscape app for the CausalPath method. CausalPath (causalpath.org) evaluates proteomic measurements against prior knowledge of biological pathways and infers causality between changes in measured features, such as global protein and phospho-protein levels. 
 
+* CausalPath Publication: https://pubmed.ncbi.nlm.nih.gov/34179843/
+* CausalPath Code: https://github.com/PathwayAndDataAnalysis/causalpath
+
+## Instructions to Run the CausalPath Cytoscape App
 ### Pre- Requisites
 ```
 Java
