@@ -76,8 +76,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     JPanel jPanel5 = new JPanel();
     JPanel jPanel7 = new JPanel();
     JPanel jpanel8 = new JPanel();
-//    java.net.URL imgurl = new java.net.URL("UrlPath");
-//    BufferedImage img = ImageIO.read(imgurl);
+
     ImagePanel imagepanel = new ImagePanel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/legend.png"))).getImage());
     public LegendPanel legendPanel;
     Boolean SifButtonFlag = false;
@@ -276,32 +275,6 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         jPanel5.add(tutorialhelp);
 
         jPanel5.add(codehelp);
-
-//        GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-//        jPanel5.setLayout(jPanel5Layout);
-//        jPanel5Layout.setHorizontalGroup(
-//                jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-//                        .addGroup(jPanel5Layout.createSequentialGroup()
-//                                .addContainerGap(15, 38)
-//                                .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addComponent(helpbuttonnew1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addComponent(helpbuttonnew2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addContainerGap(15, 38)
-//
-//                        )
-//        );
-//        jPanel5Layout.setVerticalGroup(
-//                jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-//                        .addGroup(jPanel5Layout.createSequentialGroup()
-//                                .addContainerGap()
-//                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-//                                .addComponent(helpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                .addComponent(helpbuttonnew1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                .addComponent(helpbuttonnew2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                )
-//                                .addContainerGap())
-//        );
-
 
         jpanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jpanel8);
