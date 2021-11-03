@@ -1,23 +1,25 @@
 package org.biopax.cytoscape.causalpath.Panel;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 
+import org.apache.poi.ss.formula.functions.T;
 import org.cytoscape.application.events.*;
 import org.cytoscape.application.swing.CytoPanelComponent;
 import org.cytoscape.application.swing.CytoPanelName;
@@ -46,15 +48,23 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     private static final long serialVersionUID = 8292806967891823933L;
     public final static Logger LOGGER =
             Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    public static final String URL = "https://github.com/PathwayAndDataAnalysis/causalpath";
+    public static final String URLCODE = "https://github.com/cannin/causalpath_cytoscape_app";
+    public static final String URLAPP = "https://apps.cytoscape.org/apps/causalpathcytoscapeapp";
+    public static final String URLMethod = "https://pubmed.ncbi.nlm.nih.gov/34179843/";
+    private static final String URLTutorial = "https://pubmed.ncbi.nlm.nih.gov/34179843/";
+    public final String NodeUrl = "https://www.genecards.org/cgi-bin/carddisp.pl?gene=";
+    String  name="";
     public FormatFileImport formatFileImport;
     public CyServiceRegistrar cyServiceRegistrar;
     public CyNetwork cyNetwork;
-    JButton networkfileuploadbutton = new JButton("Load SIF File");
-    JButton formatfileuploadbutton = new JButton("Load .format File");
+    JButton networkfileuploadbutton = new JButton("SIF File");
+    JButton formatfileuploadbutton = new JButton("Format File");
     JButton Jsonfileuploadbutton = new JButton("Load Json File");
     JButton submitbutton = new JButton("Submit");
-    JButton helpButton = new JButton();
+    JButton apphelp = new JButton();
+    JButton methodhelp = new JButton();
+    JButton tutorialhelp = new JButton();
+    JButton codehelp = new JButton();
     JButton exitButton = new JButton();
     Checkbox Siftype = new Checkbox();
     Checkbox Jsontype = new Checkbox();
@@ -65,6 +75,10 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
     JPanel jPanel6 = new JPanel();
     JPanel jPanel5 = new JPanel();
     JPanel jPanel7 = new JPanel();
+    JPanel jpanel8 = new JPanel();
+//    java.net.URL imgurl = new java.net.URL("UrlPath");
+//    BufferedImage img = ImageIO.read(imgurl);
+    ImagePanel imagepanel = new ImagePanel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/legend.png"))).getImage());
     public LegendPanel legendPanel;
     Boolean SifButtonFlag = false;
     Boolean JsonbuttonFlag = false;
@@ -102,13 +116,13 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         jPanel6.setVisible(false);
         jPanel4.setVisible(true);
 
-        networkfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        formatfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+//        networkfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+//        formatfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         Jsonfileuploadbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        submitbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+       // submitbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        submitbutton.setToolTipText("Please upload the files correctly before submitting");
+        submitbutton.setToolTipText("Please load the files correctly before submitting");
 
 
         JPanel mainPanel = new JPanel();
@@ -252,31 +266,95 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
                                         .addComponent(networkfileuploadbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-                jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Help"));
+
+        GridLayout jpanel5layout = new GridLayout(2,2);
+
+        jPanel5.setLayout(jpanel5layout);
+        jPanel5.add(methodhelp);
+        jPanel5.add(apphelp);
+        jPanel5.add(tutorialhelp);
+
+        jPanel5.add(codehelp);
+
+//        GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+//        jPanel5.setLayout(jPanel5Layout);
+//        jPanel5Layout.setHorizontalGroup(
+//                jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                        .addGroup(jPanel5Layout.createSequentialGroup()
+//                                .addContainerGap(15, 38)
+//                                .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                .addComponent(helpbuttonnew1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                .addComponent(helpbuttonnew2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                .addContainerGap(15, 38)
+//
+//                        )
+//        );
+//        jPanel5Layout.setVerticalGroup(
+//                jPanel5Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+//                        .addGroup(jPanel5Layout.createSequentialGroup()
+//                                .addContainerGap()
+//                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+//                                .addComponent(helpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                .addComponent(helpbuttonnew1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                .addComponent(helpbuttonnew2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                )
+//                                .addContainerGap())
+//        );
+
+
+        jpanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jpanel8);
+        jpanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+                jPanel8Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addContainerGap(29, 68)
-                                .addComponent(helpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         )
         );
-        jPanel5Layout.setVerticalGroup(
-                jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanel8Layout.setVerticalGroup(
+                jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(helpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(submitbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
-        helpButton.setText("Help");
-        helpButton.addActionListener(new ActionListener() {
+        //imagepanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        GroupLayout imagepanelLayout = new javax.swing.GroupLayout(imagepanel);
+        imagepanel.setLayout(imagepanelLayout);
+        System.out.println(imagepanel.getHeight()+" "+imagepanel.getWidth());
+
+        methodhelp.setText("Method");
+        apphelp.setText("App");
+        codehelp.setText("Code");
+        tutorialhelp.setText("Tutorial");
+        methodhelp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                helpButtonActionPerformed(e);
+                methodhelpActionPerformed(e);
             }
         });
+        apphelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                apphelpButtonActionPerformed(e);
+            }
+        });
+        codehelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                codehelpButtonActionPerformed(e);
+            }
+        });
+        tutorialhelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tutorialhelpButtonActionPerformed(e);
+            }
+        });
+        
 
         exitButton.setForeground(new java.awt.Color(200, 0, 0));
         exitButton.setText("Legend");
@@ -310,7 +388,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Status Bar"));
 
 
-        statusLabel.setText("Upload status");
+        statusLabel.setText("Load Status");
 
         GroupLayout jPanel7Layout = new GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -348,8 +426,12 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
                                                 .addComponent(jPanel4, GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 //.addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(submitbutton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jpanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                                                //.addComponent(submitbutton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(imagepanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
                                         ))
                         )
         );
@@ -368,11 +450,17 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
 //								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jpanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                               // .addComponent(submitbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 
-                                .addContainerGap(90, Short.MAX_VALUE))
+                                        .addComponent(imagepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                                .addContainerGap(90, Short.MAX_VALUE)
+
+                        )
         );
 
         jScrollPane.setViewportView(mainPanel);
@@ -399,6 +487,39 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         this.add(formatfileuploadbutton);
         this.add(submitbutton);
         this.setVisible(true);
+    }
+    private void methodhelpActionPerformed(ActionEvent e) {//GEN-FIRST:event_helpButtonActionPerformed
+        try {
+            Desktop.getDesktop().browse(new URI(URLMethod));
+        } catch (IOException | URISyntaxException ioException) {
+            ioException.printStackTrace();
+        }
+        //cyServiceRegistrar.getService(OpenBrowser.class).openURL(url);
+
+
+    }
+    private void apphelpButtonActionPerformed(ActionEvent e) {
+        try {
+            Desktop.getDesktop().browse(new URI(URLAPP));
+        } catch (IOException | URISyntaxException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    private void codehelpButtonActionPerformed(ActionEvent e) {
+        try {
+            Desktop.getDesktop().browse(new URI(URLCODE));
+        } catch (IOException | URISyntaxException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    private void tutorialhelpButtonActionPerformed(ActionEvent e) {
+        try {
+            Desktop.getDesktop().browse(new URI(URLTutorial));
+        } catch (IOException | URISyntaxException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     private void JsonfileuploadAction(LegendPanel legendPanel) {
@@ -525,16 +646,7 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         return networkfileuploadbutton;
     }
 
-    private void helpButtonActionPerformed(ActionEvent e) {//GEN-FIRST:event_helpButtonActionPerformed
-        try {
-            Desktop.getDesktop().browse(new URI(URL));
-        } catch (IOException | URISyntaxException ioException) {
-            ioException.printStackTrace();
-        }
-        //cyServiceRegistrar.getService(OpenBrowser.class).openURL(url);
 
-
-    }
 
     public JButton getFormatfileuploadbutton() {
         return formatfileuploadbutton;
@@ -574,25 +686,99 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
         Collection<CyEdge> selectedEdges = selectedNodesAndEdgesEvent.getSelectedEdges();
         CyTable nodetable = cyNetwork.getDefaultNodeTable();
         CyTable edgetable = cyNetwork.getDefaultEdgeTable();
+
         if (selectednode.size() > 0) {
             for (CyNode node : selectednode) {
 
-                String name = cyNetwork.getRow(node).get(CyNetwork.NAME, String.class);
+                name = cyNetwork.getRow(node).get(CyNetwork.NAME, String.class);
 
                 String Totaltext = "";
+                JFrame frame = new JFrame();
+                DefaultTableModel tableModel = new DefaultTableModel();
+                JTable jTable = new JTable(tableModel);
                 String temp = nodetable.getRow(node.getSUID()).get(Heading, String.class);
                 if (temp.length() > 0) {
                     String[] Siteinfo = temp.split("\\|");
-                    for (int i = 0; i < Siteinfo.length; i++) {
-                        Totaltext += (Siteinfo[i] + "\n");
 
+                    int elementLength = 0;
+
+
+                    tableModel.addColumn("Name");
+                    tableModel.addColumn("Value");
+                    Vector<String> Sitename = new Vector<>();
+                    Vector<Double> Sitevalue = new Vector<>();
+                    for(int i=0; i< Siteinfo.length; i++) {
+                        String[] var = Siteinfo[i].split("\\s+");
+                        Sitename.add(var[0]);
+                        Double v = Double.parseDouble(var[1]);
+                        v = Math.round(v * 100.0) / 100.0;
+                        Sitevalue.add(v);
+                        if(var[0].length() > elementLength) {
+                            elementLength = var[0].length();
+                        }
+                        tableModel.insertRow(0, new Object[] { var[0],v });
                     }
-                }
 
-                resultPanel.updatetext(name, Totaltext, 0);
+//                    frame.setSize(550, 350);
+//                    frame.add(new JScrollPane(jTable));
+//                    frame.setVisible(true);
 
+//                    for (int i = 0; i < Sitename.size(); i++) {
+//                        String var = Sitename.get(i);
+//                        String insert = var;
+//                        StringBuffer sbSpace = new StringBuffer();
+//                        for(int j= var.length();j<=elementLength;j++)
+//                            sbSpace.append(" ");
+//                        insert+=sbSpace;
+//                        insert+="| ";
+//                        insert += Sitevalue.get(i);
+//
+//                        Totaltext += (insert + "\n");
+//
+//                    }
+               }
+
+                resultPanel.updatetext(name, Totaltext, 0,jTable);
             }
-        } else if (selectedEdges.size() > 0) {
+            JLabel hyperlink = resultPanel.getNodelink();
+            final String finalName = NodeUrl+name;
+            System.out.println(finalName);
+            hyperlink.setText("GeneCards");
+            resultPanel.setFinalName(finalName);
+            hyperlink.setVisible(true);
+            hyperlink.setForeground(Color.BLUE);
+            hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+
+//            hyperlink.addMouseListener(new MouseAdapter() {
+//                @Override
+//                public void mouseClicked(MouseEvent e) {
+//                    try {
+//                        Desktop.getDesktop().browse(new URI(finalName));
+//                    } catch (IOException | URISyntaxException ioException) {
+//                        ioException.printStackTrace();
+//                    }
+//                }
+//                @Override
+//                public void mouseReleased(MouseEvent e) {
+//                    hyperlink.setForeground(Color.RED);
+//                }
+//
+//                @Override
+//                public void mouseEntered(MouseEvent e) {
+//                    hyperlink.setForeground(Color.YELLOW);
+//                }
+//
+//                @Override
+//                public void mouseExited(MouseEvent e) {
+//                    hyperlink.setForeground(Color.BLUE);
+//                }
+//            });
+
+        }
+        else if (selectedEdges.size() > 0) {
+            JFrame jFrame = new JFrame();
+            JTable jTable = new JTable();
             for (CyEdge edge : selectedEdges) {
 
                 String temp = edgetable.getRow(edge.getSUID()).get("name", String.class);
@@ -624,10 +810,13 @@ public class LegendPanel extends JPanel implements CytoPanelComponent, SelectedN
                     }
 
                 }
-
-                resultPanel.updatetext(splited[1].substring(1, splited[1].length() - 1), TotalText, 1);
-
+                resultPanel.updatetext(splited[1].substring(1, splited[1].length() - 1), TotalText, 1,jTable);
             }
+                JLabel hyperlink = resultPanel.getNodelink();
+                hyperlink.setVisible(false);
+
+
+
         } else {
             resultPanel.HidePanel();
         }

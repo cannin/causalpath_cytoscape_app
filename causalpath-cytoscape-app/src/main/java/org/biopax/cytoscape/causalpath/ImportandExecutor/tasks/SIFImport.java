@@ -103,13 +103,21 @@ public class SIFImport {
 
             // setting up the tunable here
             if(flag)
-             CommandExecutor.execute("network set current network=" + networkName, cyServiceRegistrar);
+                try {
+                    CommandExecutor.execute("network set current network=" + networkName, cyServiceRegistrar);
+                }
+                catch (Exception e){
+                    System.out.println("Null pointer Exception");
+                }
+
             SIFCyNetwork = CyNetworkUtils.readCyNetworkFromFile(cyServiceRegistrar, temp,synchronousTaskManager);
 
             SIFCyNetwork.getRow(SIFCyNetwork).set(CyNetwork.NAME, networkName);
+
             CyTable edgetable = SIFCyNetwork.getDefaultEdgeTable();
             Collection<CyEdge> edgelist = SIFCyNetwork.getEdgeList();
-            edgetable.createColumn(Edge_Info_col_Name, String.class, false);
+            if(!edgetable.getColumns().contains(Edge_Info_col_Name))
+             edgetable.createColumn(Edge_Info_col_Name, String.class, false);
             for (CyEdge edge : edgelist) {
 
                 String temp = edgetable.getRow(edge.getSUID()).get("name", String.class);

@@ -4,6 +4,7 @@
 /home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/Panel/LegendPanel.java
 /home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/CausalPathHelp.java
 /home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/ImportandExecutor/tasks/SIFImport.java
+/home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/Panel/ImagePanel.java
 /home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/creatystyle/StyleCreate.java
 /home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/design/LabeltextSettings.java
 /home/pritams/project/causalpath_cytoscape_app/causalpath-cytoscape-app/src/main/java/org/biopax/cytoscape/causalpath/utils/CyNetworkUtils.java
